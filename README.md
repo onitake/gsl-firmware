@@ -26,3 +26,5 @@ Device list
 |---------------|---------------------------------|---------|----------------------------------------------------------------|---------|-----------------|--------------------|
 | Chuwi         | hi8                             |  no     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       | unknown | yes (10 points) |                    |
 | Chuwi         | vi8                             |  no     | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       | unknown | yes (10 points) |                    |
+| Trekstor      | SurfTab wintron 7.0             |  no     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) | unknown | yes (10 points) | no finger tracking |
+| Trekstor      | SurfTab wintron 7.0 (ST70416-6) |  no     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) | unknown | yes (10 points) |                    |
