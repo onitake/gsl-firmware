@@ -16,11 +16,12 @@ distribution such as Debian or Ubuntu.
 The files may be covered by proprietary licenses or copyright.
 
 Conversely, everything in the tools directory published under
-the GNU General Public license v2, as laid out in tools/LICENSE
+the GNU General Public license v2, as laid out in
+[tools/LICENSE](tools/LICENSE).
 
 
 Device list
-===========
+-----------
 
 | Manufacturer  | Device                          | Tested  | Firmware                                                       | Size    | Multitouch      | Comment            |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|---------|-----------------|--------------------|
