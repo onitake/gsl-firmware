@@ -25,3 +25,4 @@ Device list
 | Manufacturer  | Device                          | Tested  | Firmware                                                       | Size    | Multitouch      | Comment            |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|---------|-----------------|--------------------|
 | Chuwi         | hi8                             |  no     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       | unknown | yes (10 points) |                    |
+| Chuwi         | vi8                             |  no     | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       | unknown | yes (10 points) |                    |

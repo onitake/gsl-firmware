@@ -1,0 +1,5 @@
+firmware end:98a0:39072
+model: 1680
+resolution: 1650/1660x800
+touches: 5
+flags: yflip,track
