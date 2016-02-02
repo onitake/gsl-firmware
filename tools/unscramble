@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IO::File;
+
+sub usage() {
+	print STDERR "Usage: unscramble SileadTouch.fw gsl_ts.fw\n";
+	print STDERR "Converts a scrambled Silead Windows driver firmware image into legacy binary format.\n";
+	-1;
+}
+
+my $scrfile = $ARGV[0] or exit usage;
+my $fwfile = $ARGV[1] or exit usage;
+
+my $scrambled = '';
+do {
+	my $in = IO::File->new($scrfile, 'r') or die "Can't open $scrfile: $!";
+	$in->binmode();
+	local $/;
+	$scrambled = <$in>;
+	defined $scrambled or die "Can't read firmware: $!";
+	$in->close();
+};
+
+my $unscrambled = '';
+for my $char (split //, $scrambled) {
+	$unscrambled .= chr(ord($char) ^ 0x88);
+}
+
+my $out = IO::File->new($fwfile, 'w') or die "Can't open $fwfile: $!";
+
+my $cfg = 0;
+for my $line (split /\n/, $unscrambled) {
+	if ($cfg and $line =~ /};/) {
+		$cfg = 0;
+	}
+	if ($line =~ /TS_CFG_DATA/) {
+		$cfg = 1;
+	}
+	if ($cfg) {
+		$line =~ s/\s//g;
+		$line = lc($line);
+		if ($line =~ /{0x([0-9a-f]+),0x([0-9a-f]+)},/) {
+			my $address = hex($1);
+			my $data = hex($2);
+			print $out pack('(LL)<', $address, $data) or die "Can't write to output: $!";;
+		}
+	}
+}
+
+$out->close();
