@@ -29,3 +29,4 @@ Device list
 | Chuwi         | vi8                             |  no     | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       | unknown | yes (10 points) |                    |
 | Trekstor      | SurfTab wintron 7.0             |  no     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) | unknown | yes (10 points) | no finger tracking |
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) |  no     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) | unknown | yes (10 points) |                    |
+| Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       | unknown | yes ( 5 points) | some info in touch_firmware_params.txt|         
