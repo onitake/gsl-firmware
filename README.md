@@ -15,7 +15,7 @@ distribution such as Debian or Ubuntu.
 
 The files may be covered by proprietary licenses or copyright.
 
-Conversely, everything in the tools directory published under
+Conversely, everything in the tools directory is published under
 the GNU General Public license v2, as laid out in
 [tools/LICENSE](tools/LICENSE).
 
