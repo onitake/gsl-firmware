@@ -7,7 +7,7 @@ trekstor/surftab7old
 | Device                  | SurfTab wintron 7.0 (v1) |
 | Website                 | http://www.trekstor.de/detail-surftabs-de/product/surftab-wintron-70.html |
 | Vendor driver (Windows) | ? |
-| Legacy firmware         | (firmware.fw)[firmware.fw] |
+| Extracted firmware      | [firmware.fw](firmware.fw) |
 | Touch panel resolution  | ? |
 | Touch controller        | GSL1680 |
 | Multitouch support      | Yes (10 points) |
