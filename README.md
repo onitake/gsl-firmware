@@ -28,6 +28,18 @@ characteristics of the touch panel, if you know them. You should
 also include a patch for the hardware matrix below.
 
 
+Device list
+-----------
+
+| Manufacturer  | Device                          | Tested  | Firmware                                                       |
+|---------------|---------------------------------|---------|----------------------------------------------------------------|
+| Chuwi         | hi8                             |  no     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
+| Chuwi         | vi8                             |  no     | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       |
+| Trekstor      | SurfTab wintron 7.0             |  no     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
+| Trekstor      | SurfTab wintron 7.0 (ST70416-6) |  no     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
+| Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
+
+
 Firmware formats
 ----------------
 
@@ -134,15 +146,3 @@ To convert a firmware image back into legacy format, use:
 
 Note that memory page order is not preserved. This should not
 pose a problem for the controller, however.
-
-
-Device list
------------
-
-| Manufacturer  | Device                          | Tested  | Firmware                                                       |
-|---------------|---------------------------------|---------|----------------------------------------------------------------|
-| Chuwi         | hi8                             |  no     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
-| Chuwi         | vi8                             |  no     | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       |
-| Trekstor      | SurfTab wintron 7.0             |  no     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
-| Trekstor      | SurfTab wintron 7.0 (ST70416-6) |  no     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
-| Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
