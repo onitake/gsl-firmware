@@ -8,14 +8,15 @@ There is also a number of conversion tools here that help with
 extraction and preparation of firmware images.
 
 The firmware files were extracted from Android and Windows device
-drivers, as published by device manufacturers. They are meant
-to be used by people who prefer to replace the operating system
-intended by the manufacturer, for example a generic Linux
-distribution such as Debian or Ubuntu.
+drivers, as published by device manufacturers. They are intended
+for people who prefer to replace the shipped operating
+system with a generic Linux distribution such as Debian or Ubuntu.
 
 The files may be covered by proprietary licenses or copyright.
+Please consult the manufacturer's website or device documentation
+for more information.
 
-Conversely, everything in the tools directory is published under
+In contrast, everything in the tools directory is published under
 the GNU General Public license v2, as laid out in
 [tools/LICENSE](tools/LICENSE).
 
@@ -93,7 +94,7 @@ The [gslx680-acpi](https://github.com/onitake/gslx680-acpi) driver
 requires firmware in a special, more compact format.
 
 Use [firmware/fwtool](firmware/fwtool) to convert regular firmware
-into this format. The tool will also sets some non-generic
+into this format. The tool will also set some non-generic
 device parameters, such as panel width and height, tracking support, etc.
 
 The file format is described in 'firmware/Firmware/Silead.pm'.
