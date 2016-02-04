@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IO::File;
+
+sub usage() {
+	print STDERR "Usage: untscfg GSL_TS_CFG.h gsl_ts.fw\n";
+	print STDERR "Converts the GSL_TS_CFG.h from a Silead Windows driver package into legacy binary format.\n";
+	-1;
+}
+
+my $tscffile = $ARGV[0] or exit usage;
+my $fwfile = $ARGV[1] or exit usage;
+
+my $unscrambled = '';
+do {
+	my $in = IO::File->new($tscffile, 'r') or die "Can't open $tscffile: $!";
+	$in->binmode();
+	local $/;
+	$unscrambled = <$in>;
+	defined $unscrambled or die "Can't read firmware: $!";
+	$in->close();
+};
+
+my $out = IO::File->new($fwfile, 'w') or die "Can't open $fwfile: $!";
+
+my $cfg = 0;
+for my $line (split /\n/, $unscrambled) {
+	if ($cfg and $line =~ /};/) {
+		$cfg = 0;
+	}
+	if ($line =~ /TS_CFG_DATA/) {
+		$cfg = 1;
+	}
+	if ($cfg) {
+		$line =~ s/\s//g;
+		$line = lc($line);
+		if ($line =~ /{0x([0-9a-f]+),0x([0-9a-f]+)},/) {
+			my $address = hex($1);
+			my $data = hex($2);
+			print $out pack('(LL)<', $address, $data) or die "Can't write to output: $!";;
+		}
+	}
+}
+
+$out->close();
