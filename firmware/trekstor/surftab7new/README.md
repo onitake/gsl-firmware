@@ -1,8 +1,8 @@
 trekstor/surftab7new
 --------------------
 
-| | |
-|-|-|
+| Item | Description |
+|------|-------------|
 | Manufacturer            | Trekstor                 |
 | Device                  | SurfTab wintron 7.0 (v2) |
 | Website                 | http://www.trekstor.de/detail-surftabs-de/product/surftab-wintron-70-v2.html |

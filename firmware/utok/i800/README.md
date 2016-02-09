@@ -1,8 +1,8 @@
 utok/i800
 ---------
 
-| | |
-|-|-|
+| Item | Description |
+|------|-------------|
 | Manufacturer              | Utok |
 | Device                    | i800 |
 | Website                   |  |
