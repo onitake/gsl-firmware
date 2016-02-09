@@ -1,0 +1,82 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IO::File;
+use IO::Dir;
+use File::Basename;
+use File::Spec::Functions qw(rel2abs catdir catfile);
+
+our $mydir = dirname(rel2abs(__FILE__));
+our $basedir = catdir($mydir, '..', 'firmware');
+our $fwtool = catfile($mydir, 'fwtool');
+
+my $root = IO::Dir->new($basedir) or die("Can't access $basedir: $!");
+for (my $vendor = $root->read(); defined($vendor); $vendor = $root->read()) {
+	if ($vendor !~ /^(.|..)$/) {
+		my $vendordir = catdir($basedir, $vendor);
+		my $devices = IO::Dir->new($vendordir);
+		if (defined($devices)) {
+			for (my $device = $devices->read(); defined($device); $device = $devices->read()) {
+				if ($device !~ /^(.|..)$/) {
+					my $devicedir = catdir($vendordir, $device);
+					if (-d $devicedir) {
+						print("Processing $vendor/$device...\n");
+						my $readme = catfile($devicedir, 'README.md');
+						my $sileadts = catfile($devicedir, 'silead_ts.fw');
+						if (-e $readme) {
+							my $overwrite;
+							if (-e $sileadts) {
+								print("silead_ts.fw found, overwrite? (y/N)");
+								my $answer = readline();
+								$overwrite = ($answer =~ /^[yY]/);
+							} else {
+								$overwrite = 1;
+							}
+							if ($overwrite) {
+								my $firmware = catfile($devicedir, 'firmware.fw');
+								my $model = '1680';
+								my $width = 4095;
+								my $height = 4095;
+								my $points = 10;
+								my %flags = ( xflip => 0, yflip => 0, swap => 0, track => 0 );
+								
+								my $table = IO::File->new($readme, 'r') or warn("Error opening README.md");
+								while (my $line = <$table>) {
+									if ($line =~ /Touch controller\s*\|[ \ta-zA-Z]*([0-9]{4})/) {
+										$model = $1;
+									} elsif ($line =~ /Extracted firmware\s*\|[^(]*\(([a-zA-Z0-9_.]+)\)/) {
+										$firmware = catfile($devicedir, $1);
+									} elsif ($line =~ /Touch panel resolution\s*\|[^0-9]*([0-9]+)[ \t\/xX,]+([0-9]+)/) {
+										$width = $1;
+										$height = $2;
+									} elsif ($line =~ /Multitouch support\s*\|[^0-9]*([0-9]+)/) {
+										$points = $1;
+									} elsif ($line =~ /Finger tracking\s*\|\W*[Nn]/) {
+										$flags{track} = 1;
+									} elsif ($line =~ /Mirrored horizontally\s*\|\W*[Yy]/) {
+										$flags{xflip} = 1;
+									} elsif ($line =~ /Mirrored vertically\s*\|\W*[Yy]/) {
+										$flags{yflip} = 1;
+									} elsif ($line =~ /Axes swapped\s*\|\W*[Yy]/) {
+										$flags{swap} = 1;
+									}
+								}
+								
+								if (-e $firmware) {
+									my $flagstring = join(',', map({ $flags{$_} ? "$_" : "no$_" } keys(%flags)));
+									print("Running: fwtool -c $firmware -1 -m $model -w $width -h $height -t $points -f $flagstring $sileadts\n");
+									system($fwtool, '-c', $firmware, '-1', '-m', $model, '-w', $width, '-h', $height, '-t', $points, '-f', $flagstring, $sileadts);
+								} else {
+									print("Firmware $firmware found.\n");
+								}
+							}
+						} else {
+							print("No README.md found.\n");
+						}
+					}
+				}
+			}
+		}
+	}
+}
