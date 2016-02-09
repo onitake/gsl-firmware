@@ -11,4 +11,8 @@ trekstor/surftab7old
 | Touch panel resolution  | ? |
 | Touch controller        | GSL1680 |
 | Multitouch support      | Yes (10 points) |
-| Comments                | No hardware finger tracking |
+| Finger tracking         | No |
+| Mirrored horizontally   | No |
+| Mirrored vertically     | No |
+| Axes swapped            | No |
+| Comments                |  |
