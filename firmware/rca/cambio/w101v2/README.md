@@ -1,4 +1,4 @@
-rca/cambio/v101v2
+rca/cambio/w101v2
 --------------------
 
 | Item | Description |
@@ -16,4 +16,5 @@ rca/cambio/v101v2
 | Mirrored horizontally   | Yes |
 | Mirrored vertically     | Yes |
 | Axes swapped            | No |
-| Comments                | fwtool -c ../firmware.fw -m 1680 -w 1650 -h 880 -t 10 -f xflip,yflip silead_ts.fw |
+| Comments                | fwtool -c firmware.fw -m 1680 -w 1650 -h 880 -t 10 -f xflip,yflip silead_ts.fw |
+|                         | Touchscreen resol. seems to be higher than the panel.  These settings worked well. |
