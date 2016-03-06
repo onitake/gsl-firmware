@@ -39,7 +39,7 @@ Device list
 | Trekstor      | SurfTab wintron 7.0             |  no     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) |  no     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
-| RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/cambio/w101v2](firmware/rca/cambio/w101v2)       |
+| RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 
 
 Firmware formats
