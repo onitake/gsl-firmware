@@ -55,12 +55,14 @@ adb pull.
 On your build machine, on the command line, use the script
 'firmware/fw_extractor' to extract the firmware to its own file.
 
-    tools/fw_extractor my_android_gslx680.ko firmware.fw
+    tools/fw_extractor my_android_gslx680.ko
 
 The Android driver may well contain multiple firmwares to support
 different hardware configurations with the same driver. The extractor
 will spit those out as seperate files. We currently have no way of
 knowing which is right for your device. You will have to try each.
+Sometimes, the file names will give a clue, like panel size, product
+name, resolution or chip name. Test the matching ones first.
 
 If you have a Windows driver instead, the firmware either comes in
 the form of a file named GSL_TS_CFG.h or SileadTouch.fw. The latter
