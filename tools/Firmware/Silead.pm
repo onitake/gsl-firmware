@@ -169,7 +169,7 @@ sub import_tscfg {
 		if ($cfg and $line =~ /};/) {
 			$cfg = 0;
 		}
-		if ($line =~ /TS_CFG_DATA/) {
+		if ($line =~ /TS_CFG_DATA|GSLX68X_FW/) {
 			$cfg = 1;
 		}
 		if ($cfg) {
