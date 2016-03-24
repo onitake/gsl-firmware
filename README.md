@@ -42,6 +42,36 @@ Device list
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 
 
+Adding new firmware
+-------------------
+
+If you'd like to add new firmware to list, please send a pull request
+with the following structure:
+
+- `firmware/<manufacturer>/<device>/<unpacked driver>/`
+  The original Windows or Android drivers or firmware files
+  (SileadTouch.sys, SileadTouch.fw, gslx68x_ts.ko, ...)
+- `firmware/<manufacturer>/<device>/README.md`
+  A readme containing all (known) device information plus
+  download links to the original Windows/Android driver or
+  firmware. See [firmware/README.md.template](firmware/README.md.template)
+  for an example with explanations.
+- `firmware/<manufacturer>/<device>/silead.fw`
+  (optional) The extracted firmware in legacy format, as
+  created by fw_extractor, untscfg or unscramble
+- `firmware/<manufacturer>/<device>/silead_ts.fw`
+  (optional) The extracted firmware in gslx680-acpi format,
+  using the correct parameters.
+- `README.md`
+  A patch to this readme file that adds an entry to the
+  device list.
+
+The "Tested" field should only be "Yes" if you have confirmed that
+the converted firmware works with silead_ts.ko or gslx680_ts_acpi.ko
+and the touchscreen responds properly, i.e. the device parameters
+are good.
+
+
 Firmware formats
 ----------------
 

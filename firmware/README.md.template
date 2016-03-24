@@ -1,0 +1,20 @@
+<manufacturer_short_name>/<device_short_name>
+---------------------------------------------
+
+| Item                    | Description |
+|-------------------------|-------------|
+| Manufacturer            | The name of the device manufacturer |
+| Device                  | The full name of the device, including a version or product code if there are multiple revisions |
+| Website                 | http://.../products/device |
+| Vendor driver (Windows) | ftp://.../drivers/device/driver.zip |
+| Extracted firmware      | [firmware.fw](firmware.fw) |
+| Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
+| Display resolution      | The resolution of the display, such as 1920x1200 |
+| Touch panel resolution  | The resolution of the touch screen, usually smaller than the display resolution |
+| Touch controller        | GSLxxxx, you should open your device and verify this |
+| Multitouch support      | Yes (number of recognized touch points) or No, all Silead chips should support 5 or 10 touch points |
+| Finger tracking         | Yes, if the chip already does finger tracking, No if software finger tracking needs to be enabled in the driver |
+| Mirrored horizontally   | Yes, if the touch screen is mirrored along the X axis, i.e. left and right are reversed, otherwise No |
+| Mirrored vertically     | Yes, if the touch screen is mirrored along the Y axis, i.e. top and bottom are reversed, otherwise No |
+| Axes swapped            | Yes, if the touch screen is rotated by 90 degrees, i.e. moving from left to right results in movement from top to bottom |
+| Comments                | The exact fwtool command line used to generate silead_ts.fw or other relevant information |
