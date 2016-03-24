@@ -20,13 +20,8 @@ In contrast, everything in the tools directory is published under
 the GNU General Public license v2, as laid out in
 [tools/LICENSE](tools/LICENSE).
 
-If you would like to submit firmware for a new device not
-mentioned here, please open an issue, or submit a push request
-containing the original driver, a converted/extracted version
-(check the [tools](tools) directory for some conversion tools),
-and a short README.md describing the firmware source and the
-characteristics of the touch panel, if you know them. You should
-also include a patch for the hardware matrix below.
+See below for instructions on how to submit firmware for a
+new device.
 
 
 Device list
@@ -45,8 +40,8 @@ Device list
 Adding new firmware
 -------------------
 
-If you'd like to add new firmware to list, please send a pull request
-with the following structure:
+To request new firmware to be added to the list, please send a
+pull request with the following structure:
 
 - `firmware/<manufacturer>/<device>/<unpacked driver>/`
   The original Windows or Android drivers or firmware files
@@ -58,10 +53,10 @@ with the following structure:
   for an example with explanations.
 - `firmware/<manufacturer>/<device>/silead.fw`
   (optional) The extracted firmware in legacy format, as
-  created by fw_extractor, untscfg or unscramble
+  created by fw_extractor, untscfg or unscramble (see below)
 - `firmware/<manufacturer>/<device>/silead_ts.fw`
-  (optional) The extracted firmware in gslx680-acpi format,
-  using the correct parameters.
+  (optional) Firmware created by fwtool (see below)
+  using correct parameters.
 - `README.md`
   A patch to this readme file that adds an entry to the
   device list.
