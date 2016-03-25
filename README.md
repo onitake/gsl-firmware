@@ -29,7 +29,7 @@ Device list
 
 | Manufacturer  | Device                          | Tested  | Firmware                                                       |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|
-| Chuwi         | hi8                             |  no     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
+| Chuwi         | hi8                             |  yes    | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
 | Chuwi         | vi8                             |  no     | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       |
 | Trekstor      | SurfTab wintron 7.0             | yes     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) | yes     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
