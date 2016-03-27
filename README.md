@@ -35,6 +35,7 @@ Device list
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) | yes     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
+| Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
 
 
 Adding new firmware
