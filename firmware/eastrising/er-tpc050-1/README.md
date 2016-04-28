@@ -7,7 +7,7 @@ eastrising/er-tpc050-1
 | Device                    | ER-TPC050-1 |
 | Website                   | http://www.buydisplay.com/default/5-inch-multi-touch-screen-panel-with-controller-gsl1680 |
 | Vendor driver (Source)    | http://www.buydisplay.com/download/democode/CTP-800x480/sunplus_gslX680.c |
-| Extracted firmware        | GSLX680_fw.fw |
+| Extracted firmware        | [GSLX680_fw.fw](GSLX680_fw.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | N/A |
 | Touch panel resolution    | 800 x 480 |
