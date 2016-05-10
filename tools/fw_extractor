@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
 
 filename = sys.argv[1]
 
-p = Popen(['/bin/sh', '-c', 'readelf -S '+ filename + ' | grep \ \.rodata\ '], stdout=PIPE)
+p = Popen(['/bin/sh', '-c', 'readelf -S '+ filename + ' | grep \ \.rodata\ | sed \'s/\\[ *//g\''], stdout=PIPE)
 
 args = p.stdout.readlines()
 
@@ -23,6 +23,8 @@ rodata = args[0]
 args = rodata.split()
 
 offset = int(args[4], 16)
+
+print ".rodata offset is ", offset, "\n"
 
 p = Popen(['/bin/sh', '-c', 'readelf -s '+ filename +' | grep -i fw'], stdout=PIPE)
 
