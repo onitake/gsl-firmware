@@ -38,6 +38,7 @@ Device list
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
+| EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 
 
 Adding new firmware
