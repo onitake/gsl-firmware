@@ -9,12 +9,12 @@ EduGear/XR2N1
 | Extracted firmware        | firmware.fw                                                               |
 | Firmware for gslx680-acpi | silead_ts.fw                                                              |
 | Display resolution        | 1280x800                                                                 |
-| Touch panel resolution    | 1920x1200                                                                 |
+| Touch panel resolution    | 1920x1280                                                                 |
 | Touch controller          | GSL3680                                                                   |
 | Multitouch support        | Yes (10 points)                                                           |
 | Finger tracking           | Yes                                                                       |
 | Mirrored horizontally     | Yes                                                                       |
 | Mirrored vertically       | No                                                                        |
 | Axes swapped              | No                                                                        |
-| Comments                  | fwtool -c firmware.fw -m 3680 -w 1920 -h 1200 -f xflip -t 10 silead_ts.fw  |
+| Comments                  | fwtool -c firmware.fw -m 3680 -w 1920 -h 1280 -f xflip -t 10 silead_ts.fw  |
 --------------------------------------
