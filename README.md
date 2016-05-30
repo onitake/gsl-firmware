@@ -35,6 +35,7 @@ Device list
 | EastRising	| ER-TPC050-1			  | yes     | [firmware/eastrising/er-tpc050-1](firmware/eastrising/er-tpc050-1)|
 | Trekstor      | SurfTab wintron 7.0             | yes     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) | yes     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
+| Trekstor      | SurfTab twin 10.1 (ST10432-8)   | yes     | [firmware/trekstor/surftab-twin-10.1-ST10432-8](firmware/trekstor/surftab-twin-10.1-ST10432-8)|
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
