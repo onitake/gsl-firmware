@@ -27,11 +27,26 @@ Details:
 
 The driver used for extraction is taken from the preinstalled Windows 10 installation.
 
-For some reason the SileadTouch.sys and SileadTouch.cat in the DriverStore contains just zeros.
-Also the file GSL_TS_CFG_THREE.h contains just zeros.
-So these files may not be sufficient for reinstallations.
-
 Tested with gslx680_ts_acpi with vanilla git kernel 4.6-10744-gc543673.
+Works in plain X-server with xterm and e.g. text mode midnight commander.
+When using SDDM login manager or Plasma desktop "clicking" is not recognised.
+However dragging windows is possible.
+
+
+Command to convert GSL_TS_CFG_THREE.h
+-------------------------------------
+    tools/untscfg firmware/trekstor/surftab-twin-10.1-ST10432-8/Windows_System32_drivers/GSL_TS_CFG_THREE.h firmware/trekstor/surftab-twin-10.1-ST10432-8/firmware.fw
+
+
+Convert the firmware.fw:
+--------------------------
+    cd tools
+    ./fwtool -c ../firmware/trekstor/surftab-twin-10.1-ST10432-8/firmware.fw -m 1680 -w 1895 -h 1275 -t 10 -f yflip ../firmware/trekstor/surftab-twin-10.1-ST10432-8/silead_ts.fw
+    cd -
+
+
+Following is just for reference, if one wants to extract firmware from SileadTouch.sys:
+---------------------------------------------------------------------------------------
 
 
 Command to find the offsets used for extraction:
@@ -74,7 +89,7 @@ Extract the firmware.fw files:
     dd bs=1 if=$F of=firmware.fw_1 skip=38216  count=$(( 45072 -  38216 + 8))
     dd bs=1 if=$F of=firmware.fw_2 skip=47128  count=$(( 86720 -  47128 + 8))
     dd bs=1 if=$F of=firmware.fw_3 skip=88776  count=$((128368 -  88776 + 8))
-    dd bs=1 if=$F of=firmware.fw   skip=130424 count=$((170808 - 130424 + 8))
+    dd bs=1 if=$F of=firmware.fw_4 skip=130424 count=$((170808 - 130424 + 8))
     unset F
     cd -
 
@@ -83,11 +98,11 @@ Extract the firmware.fw files:
 | firmware.fw_1 | Not tested, much smaller then the others. |
 | firmware.fw_2 | Reacts to input, mouse pointer jumpy.     |
 | firmware.fw_3 | Reacts to input, mouse pointer jumpy.     |
-| firmware.fw   | Works best, X < 15 are not reachable.     |
+| firmware.fw_4 | Works best, X < 15 are not reachable.     |
 
 
-Convert the firmware.fw:
-------------------------
+Convert the firmware.fw_4:
+--------------------------
     cd tools
-    ./fwtool -c ../firmware/trekstor/surftab-twin-10.1-ST10432-8/firmware.fw -m 1680 -w 1895 -h 1275 -t 10 -f yflip ../firmware/trekstor/surftab-twin-10.1-ST10432-8/silead_ts.fw
+    ./fwtool -c ../firmware/trekstor/surftab-twin-10.1-ST10432-8/firmware.fw_4 -m 1680 -w 1895 -h 1275 -t 10 -f yflip ../firmware/trekstor/surftab-twin-10.1-ST10432-8/silead_ts.fw_4
     cd -
