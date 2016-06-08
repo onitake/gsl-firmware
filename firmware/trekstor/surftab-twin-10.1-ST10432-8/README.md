@@ -19,30 +19,85 @@ trekstor/surftab-twin-10.1-ST10432-8
 | Mirrored horizontally     | Yes |
 | Mirrored vertically       | No |
 | Axes swapped              | No |
-| Comments                  | ./fwtool -c firmware.fw -m 1680 -w 1895 -h 1275 -t 10 -f yflip silead_ts.fw |
+| Comments                  | ./fwtool -c GSL_TS_CFG_THREE.h -2 -m 1680 -w 1895 -h 1275 -t 10 -f yflip silead_ts.fw |
 
 
 Details:
 --------
-
 The driver used for extraction is taken from the preinstalled Windows 10 installation.
 
-Tested with gslx680_ts_acpi with vanilla git kernel 4.6-10744-gc543673.
-Works in plain X-server with xterm and e.g. text mode midnight commander.
-When using SDDM login manager or Plasma desktop "clicking" is not recognised.
-However dragging windows is possible.
+Tested with gslx680_ts_acpi with Debian kernel linux-image-4.6.0-1-amd64 (4.6.1-1).
 
 
 Command to convert GSL_TS_CFG_THREE.h
 -------------------------------------
-    tools/untscfg firmware/trekstor/surftab-twin-10.1-ST10432-8/Windows_System32_drivers/GSL_TS_CFG_THREE.h firmware/trekstor/surftab-twin-10.1-ST10432-8/firmware.fw
-
-
-Convert the firmware.fw:
---------------------------
     cd tools
-    ./fwtool -c ../firmware/trekstor/surftab-twin-10.1-ST10432-8/firmware.fw -m 1680 -w 1895 -h 1275 -t 10 -f yflip ../firmware/trekstor/surftab-twin-10.1-ST10432-8/silead_ts.fw
+    ./fwtool -c ../firmware/trekstor/surftab-twin-10.1-ST10432-8/Windows_System32_drivers/GSL_TS_CFG_THREE.h -2 -m 1680 -w 1895 -h 1275 -t 10 -f yflip ../firmware/trekstor/surftab-twin-10.1-ST10432-8/silead_ts.fw
     cd -
+
+
+Qt5 programs not working?
+-------------------------
+In my tests at first taps were not recognized in Qt5 based programs like
+Plasma or LXQt desktop, or SDDM login manager.
+
+This was because following conditions were met:
+- Debian included the libinput X input drivers and have currently higher priority than Evdev drivers.
+  See /var/log/Xorg.0.log: Using input driver 'libinput' for 'Silead GSLx680 Touchscreen'
+- Qt5 is in a version smaller than 5.6.0 installed.
+- "xinput list --long 11" reports "Abs X" valuators.
+
+But Qt5 expected "Abs MT Position X" valuators.
+
+Other programs based on different toolkits are not affected.
+
+Upstream Qt5 fixed this issue in following links:
+- https://bugreports.qt.io/browse/QTBUG-48279
+- http://code.qt.io/cgit/qt/qtbase.git/commit/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp?id=462f355e4fb16cc7a1838fa2dda0f763eee58c84
+
+Getting source for libqt5gui5_5.5.1+dfsg-17_amd64.deb, applying the above patch, rebuilding
+and reinstalling the modified package solves the issue.
+
+However hinting the X-server to use the Evdev driver would be easier (see below 99-calibration.conf).
+
+
+Calibration (evdev):
+--------------------
+Run "xinput_calibrator". It outputs a config snippet for the X-server:
+
+/usr/share/X11/xorg.conf.d/99-calibration.conf
+    Section "InputClass"
+            Identifier      "calibration"
+            MatchProduct    "Silead GSLx680 Touchscreen"
+            Option  "Calibration"   "40 1880 0 1270"
+            Option  "SwapAxes"      "0"
+            Driver "evdev"
+    EndSection
+
+For fine tuning one can also test the values first with this command:
+    xinput set-int-prop 11 "Evdev Axis Calibration" 32 40 1880 0 1270
+
+
+Calibration (libinput):
+-----------------------
+Could not find any GUI to start with calibration.
+
+I had just following command to start:
+    xinput set-float-prop 11 "libinput Calibration Matrix"  1.0   0.0  0.0       0.0 1.0    0.0       0.0 0.0 1.0
+    xinput set-float-prop 11 "libinput Calibration Matrix"  1.045 0.0 -0.015     0.0 1.045 -0.015     0.0 0.0 1.0
+
+Like described in "man 5 xorg.conf", the Option "TransformationMatrix" "a b c d e f g h i":
+- "a" and "e" specify the width and height
+- "c" and "f" specify the x and y offset
+
+If you have usable values put make such a configuration:
+/usr/share/X11/xorg.conf.d/99-calibration.conf
+    Section "InputClass"
+            Identifier      "calibration"
+            MatchProduct    "Silead GSLx680 Touchscreen"
+            Option  "CalibrationMatrix" "1.045 0.0 -0.015     0.0 1.045 -0.015     0.0 0.0 1.0"
+            Driver "libinput"
+    EndSection
 
 
 Following is just for reference, if one wants to extract firmware from SileadTouch.sys:
@@ -98,7 +153,7 @@ Extract the firmware.fw files:
 | firmware.fw_1 | Not tested, much smaller then the others. |
 | firmware.fw_2 | Reacts to input, mouse pointer jumpy.     |
 | firmware.fw_3 | Reacts to input, mouse pointer jumpy.     |
-| firmware.fw_4 | Works best, X < 15 are not reachable.     |
+| firmware.fw_4 | Works good.                               |
 
 
 Convert the firmware.fw_4:
