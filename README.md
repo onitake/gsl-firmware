@@ -119,7 +119,7 @@ There are normally several blocks of data with the same pattern that
 follow. Copy all of them into a new file and call it firmware.fw.
 This should be the firmware image for your device.
 
-See [here](firmware/trekstor/surftab-twin-10.1-ST10432-8/README.md#command-to-find-the-offsets-used-for-extraction) an example with some help from grep and dd.
+See [here](firmware/trekstor/surftab-twin-10.1-ST10432-8/README.md#command-to-find-the-offsets-used-for-extraction) for an example with some help from grep and dd.
 
 
 gslx680-acpi
