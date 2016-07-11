@@ -40,7 +40,7 @@ Device list
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
-| Cube          | i10                             | no      | [firmware/cube/i10](firmware/cube/i10)                         |
+| Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
 
 
 Adding new firmware
