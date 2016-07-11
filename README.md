@@ -38,6 +38,7 @@ Device list
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
+| Cube          | i10                             | no      | [firmware/cube/i10](firmware/cube/i10)                         |
 
 
 Adding new firmware
