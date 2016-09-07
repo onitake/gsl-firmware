@@ -41,6 +41,7 @@ Device list
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
+| jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
 
 
 Adding new firmware
