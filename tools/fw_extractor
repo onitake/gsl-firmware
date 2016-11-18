@@ -20,9 +20,10 @@ if len(args) != 1:
 
 rodata = args[0]
 
-args = rodata.split()
+args = rodata.split(']')
+args = args[1].split()
 
-offset = int(args[4], 16)
+offset = int(args[3], 16)
 
 print ".rodata offset is ", offset, "\n"
 
