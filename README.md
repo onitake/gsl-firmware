@@ -97,8 +97,8 @@ Sometimes, the file names will give a clue, like panel size, product
 name, resolution or chip name. Test the matching ones first.
 
 If you have a Windows driver instead, the firmware either comes in
-the form of a file named GSL_TS_CFG.h or SileadTouch.fw. The latter
-is just a scrambled version of GSL_TS_CFG.h and can be easily
+the form of a file named GSL_TS_CFG.h (or similar) or SileadTouch.fw.
+The latter is just a scrambled version of GSL_TS_CFG.h and can be easily
 restored by XORing every byte with 0x88.
 
 To convert GSL_TS_CFG.h into a binary firmware, use:
