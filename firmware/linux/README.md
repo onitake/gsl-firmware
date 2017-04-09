@@ -2,7 +2,8 @@
 
 This directory containts firmware images in the format expected by
 the silead.ko driver which is now part of the mainline kernel; and
-with filenames such as expected by the devicetree files (for ARM)
+with filenames such as expected by the devicetree files (for ARM) resp.
+the DMI matched info in drivers/platform/x86/silead_dmi.c (for X86), as
 shipped with the mainline kernel.
 
 ## Installation
