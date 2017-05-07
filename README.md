@@ -41,6 +41,7 @@ Device list
 | Trekstor      | SurfTab twin 10.1 (ST10432-8)   | yes     | [firmware/trekstor/surftab-twin-10.1-ST10432-8](firmware/trekstor/surftab-twin-10.1-ST10432-8)|
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
+| Onda          | V820w 16G                       | yes     | [firmware/onda/v820w_16g](firmware/onda/v820w_16g)             |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
