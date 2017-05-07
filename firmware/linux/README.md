@@ -27,6 +27,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3675-ga10h.fw                       | Allwinner A33 10" tablets with ga10h mainboard |
 | gsl3675-gt90h.fw                       | Allwinner A23 9" tablets with ga10h mainboard |
 | gsl1680-chuwi-hi10-pro.fw              | Chuwi Hi10 Pro tablets |
+| gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1686-surftab-wintron70-st70416-6.fw | Trekstor Surftab Wintron 7.0 ST70416-6 tablets |
 | gsl3670-cube-iwork8-air.fw             | Cube iWork8 Air tablets |
 | gsl3676-jumper-ezpad-mini3.fw          | Jumper EZpad mini3 |
