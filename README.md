@@ -35,6 +35,7 @@ Device list
 | Chuwi         | Hi10 Pro                        | yes     | [firmware/chuwi/hi10_pro](firmware/chuwi/hi10_pro)             |
 | Chuwi         | Hi10 Pro new (z8350, 20161209)  | yes     | [firmware/chuwi/hi10_pro-z8350](firmware/chuwi/hi10_pro-z8350) |
 | Chuwi         | Hi10 Plus                       | yes     | [firmware/chuwi/hi10_plus](firmware/chuwi/hi10_plus)           |
+| Chuwi         | HiBook                          | yes     | [firmware/chuwi/hibook](firmware/chuwi/hibook)                 |
 | EastRising	| ER-TPC050-1			  | yes     | [firmware/eastrising/er-tpc050-1](firmware/eastrising/er-tpc050-1)|
 | Trekstor      | SurfTab wintron 7.0             | yes     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) | yes     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
