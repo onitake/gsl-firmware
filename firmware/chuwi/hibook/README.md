@@ -10,11 +10,11 @@ Chuwi/HiBook
 | Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | 1920x1200 |
-| Touch panel resolution    | 1920x1200 |
+| Touch panel resolution    | 1880x1200 (estimated) |
 | Touch controller          | GSL1680 |
 | Multitouch support        | Yes (10 points) |
 | Finger tracking           | Yes |
 | Mirrored horizontally     | No |
 | Mirrored vertically       | No |
 | Axes swapped              | No |
-| Comments                  | ./fwtool -c ../firmware.fw -m 1680 -w 1920 -h 1200 -t 10 ../silead_ts.fw |
+| Comments                  | ./fwtool -c ../firmware.fw -m 3680 -w 1880 -h 1200 -t 10 ../silead_ts.fw |
