@@ -144,7 +144,7 @@ Use perldoc or a text editor to read.
 
 Example usage:
 
-    ./fwtool -c firmware.fw -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
+    tools/fwtool -c firmware.fw -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
 
 This will read legacy firmware.fw, convert it into silead_ts.fw in
 the new format, then set the controller type to GSL1680, the panel
@@ -155,11 +155,11 @@ you information on the information to put there.
 It is also possible to convert the scrambled SileadTouch.fw from a
 Windows driver directly:
 
-    ./fwtool -c SileadTouch.fw -3 -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
+    tools/fwtool -c SileadTouch.fw -3 -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
 
 And for an unscrambled GSL_TS_CFG.h, use:
 
-    ./fwtool -c TS_CFG.h -2 -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
+    tools/fwtool -c TS_CFG.h -2 -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
 
 You might still need to calibrate the touchscreen later, if
 the numbers are unknown or not accurate. Note that the maximum
@@ -175,7 +175,7 @@ enable corresponding features in the driver.
 For example, this enables software finger tracking and mirrors
 the horizontal axis:
 
-    ./fwtool -s -f track,xflip silead_ts.fw
+    tools/fwtool -s -f track,xflip silead_ts.fw
 
 The -f option may also be specified directly when converting
 a firmware image.
@@ -185,7 +185,7 @@ installed into /lib/firmware so the driver can find it.
 
 To convert a firmware image back into legacy format, use:
 
-    ./fwtool -x gslxxxx.fw silead_ts.fw
+    tools/fwtool -x gslxxxx.fw silead_ts.fw
 
 Note that memory page order is not preserved. This should not
 pose a problem for the controller, however.
