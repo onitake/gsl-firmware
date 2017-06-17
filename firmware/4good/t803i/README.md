@@ -6,7 +6,7 @@
 | Device                    | T803i       |
 | Website                   | https://4good.ru/ru/tablets/23/4good-t803i-3g.html |
 | Vendor driver (Windows)   | https://4good.ru/ru/firmware/?type=2&model=23 |
-| Extracted firmware        | firmware.fw |
+| Extracted firmware        | SileadTouch.fw |
 | Firmware for gslx680-acpi | silead_ts.fw |
 | Display resolution        | 1280x800   |
 | Touch panel resolution    | 1280x800   |
@@ -16,6 +16,6 @@
 | Mirrored horizontally     | No          |
 | Mirrored vertically       | No          |
 | Axes swapped              | No          |
-| Comments                  | ? |
+| Comments                  | Added firmware for new kernel driver |
 --------------------------------------
-not tested
+
