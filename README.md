@@ -47,6 +47,8 @@ Device list
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
 | jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
+| 4Good         | T803i                           | no      | [firmware/4good/t803i](firmware/4good/t803i)                   |
+
 
 
 Adding new firmware
