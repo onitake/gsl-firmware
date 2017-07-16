@@ -2,11 +2,58 @@ package Firmware::Silead;
 
 use strict;
 use IO::File;
+use IO::Scalar;
 
 our $MAGIC = 'GSLX';
 our $FORMAT = 1;
 our $HEADER_SIZE = 24;
 our $PAGE_SIZE = 132;
+our %formats = (
+	'new' => {
+		'load' => sub {
+			$_[0]->load_new($_[1])
+		},
+		'save' => sub {
+			$_[0]->save_new($_[1]);
+		},
+		'test' => sub {
+			return defined Firmware::Silead->load_new($_[0]);
+		},
+	},
+	'header' => {
+		'load' => sub {
+			$_[0]->load_header($_[1])
+		},
+		'save' => sub {
+			$_[0]->save_header($_[1]);
+		},
+		'test' => sub {
+			return defined Firmware::Silead->load_header($_[0]);
+		},
+	},
+	'win' => {
+		'load' => sub {
+			$_[0]->load_win($_[1])
+		},
+		'save' => sub {
+			$_[0]->save_win($_[1]);
+		},
+		'test' => sub {
+			return defined Firmware::Silead->load_win($_[0]);
+		},
+	},
+	'old' => {
+		'load' => sub {
+			$_[0]->load_old($_[1])
+		},
+		'save' => sub {
+			$_[0]->save_old($_[1]);
+		},
+		'test' => sub {
+			return defined Firmware::Silead->load_old($_[0]);
+		},
+	},
+};
 
 sub _unpack_header {
 	my ($header) = @_;
@@ -40,18 +87,50 @@ sub new {
 		xmirrored => 0,
 		ymirrored => 0,
 		tracking => 0,
-	}, ref $class ? ref $class : $class;
+		format => undef,
+		config => [ (0) x 512 ],
+	}, ref $class || $class;
 }
 
 sub load {
-	my ($class, $handle) = @_;
+	my ($class, $handle, $type) = @_;
 	if (!ref $handle) {
 		$handle = IO::File->new($handle, 'r');
 	}
 	if (!defined $handle) {
-		$@ = "Invalid file handle";
+		$@ = "File name or handle required";
 		return undef;
 	}
+	if (!defined $type or $type eq 'auto') {
+		my $here = $handle->tell();
+		for my $format (keys(%formats)) {
+			if (!$handle->seek($here, 0)) {
+				$@ = "A seekable file handle is required for format autodetection";
+				return undef;
+			}
+			my $self = $class->new();
+			if ($formats{$format}->load($self, $handle)) {
+				return $self;
+			}
+		}
+		$@ = "Format autodetection failed";
+		return undef;
+	} else {
+		if (!defined $formats{$type}) {
+			$@ = "Invalid type";
+			return undef;
+		}
+		my $self = $class->new();
+		if ($formats{$type}->load($self, $handle)) {
+			return $self;
+		}
+		$@ = "Invalid data for format";
+		return undef;
+	}
+}
+
+sub load_new {
+	my ($self, $handle) = @_;
 	binmode $handle;
 	read $handle, my $header, $HEADER_SIZE;
 	my ($magic, $model, $format, $touches, $width, $height, $swapped, $xmirrored, $ymirrored, $tracking, $pages) = _unpack_header $header;
@@ -63,17 +142,16 @@ sub load {
 		$@ = "Invalid file format $format";
 		return undef;
 	}
-	my $self = bless {
-		pages => { },
-		model => $model,
-		touches => $touches,
-		width => $width,
-		height => $height,
-		swapped => $swapped,
-		xmirrored => $xmirrored,
-		ymirrored => $ymirrored,
-		tracking => $tracking,
-	}, ref $class ? ref $class : $class;
+	$self->{pages} = { };
+	$self->{model} = $model;
+	$self->{touches} = $touches;
+	$self->{width} = $width;
+	$self->{height} = $height;
+	$self->{swapped} = $swapped;
+	$self->{xmirrored} = $xmirrored;
+	$self->{ymirrored} = $ymirrored;
+	$self->{tracking} = $tracking;
+	$self->{config} = [ (0) x 512 ];
 	for (my $i = 0; $i < $pages; $i++) {
 		read $handle, my $buffer, $PAGE_SIZE;
 		my ($address, $size, $data) = _unpack_page $buffer;
@@ -81,11 +159,12 @@ sub load {
 			return undef;
 		}
 	}
+	$self->{format} = 'new';
 	return $self;
 }
 
 sub save {
-	my ($self, $handle) = @_;
+	my ($self, $handle, $type) = @_;
 	if (!ref $handle) {
 		$handle = IO::File->new($handle, 'w');
 	}
@@ -93,6 +172,22 @@ sub save {
 		$@ = "Invalid file handle";
 		return 0;
 	}
+	if (!defined $type or $type eq 'copy') {
+		if (!defined $self->{format}) {
+			$@ = "Source format unknown, can't copy";
+			return 0;
+		}
+		$type = $self->{format};
+	}
+	if (!defined $formats{$type}) {
+		$@ = "Invalid format $type";
+		return 0;
+	}
+	return $formats{$type}->save($self, $handle);
+}
+
+sub save_new {
+	my ($self, $handle) = @_;
 	binmode $handle;
 	my @pages = $self->get_pages;
 	my $header = _pack_header $self->model, $self->touches, $self->width, $self->height, $self->swapped, $self->xmirrored, $self->ymirrored, $self->tracking, scalar(@pages);
@@ -106,7 +201,10 @@ sub save {
 }
 
 sub unpack {
-	my ($class, $data) = @_;
+	my ($self, $data) = @_;
+	if (!ref $self) {
+		$self = $self->new();
+	}
 	my $header = substr $data, 0, $HEADER_SIZE;
 	my ($magic, $model, $format, $touches, $width, $height, $swapped, $xmirrored, $ymirrored, $tracking, $pages) = _unpack_header $header;
 	if ($magic ne $MAGIC) {
@@ -117,17 +215,16 @@ sub unpack {
 		$@ = "Invalid file format $format";
 		return undef;
 	}
-	my $self = bless {
-		pages => { },
-		model => $model,
-		touches => $touches,
-		width => $width,
-		height => $height,
-		swapped => $swapped,
-		xmirrored => $xmirrored,
-		ymirrored => $ymirrored,
-		tracking => $tracking,
-	}, ref $class ? ref $class : $class;
+	$self->{pages} = { };
+	$self->{model} = $model;
+	$self->{touches} = $touches;
+	$self->{width} = $width;
+	$self->{height} = $height;
+	$self->{swapped} = $swapped;
+	$self->{xmirrored} = $xmirrored;
+	$self->{ymirrored} = $ymirrored;
+	$self->{tracking} = $tracking;
+	$self->{config} = [ (0) x 512 ];
 	for (my $i = 0; $i < $pages; $i++) {
 		my $buffer = substr $HEADER_SIZE + $i * $PAGE_SIZE, $PAGE_SIZE;
 		my ($address, $size, $data) = _unpack_page $buffer ;
@@ -152,37 +249,101 @@ sub pack {
 	return $data;
 }
 
-sub import_scrambled {
+sub load_win {
 	my ($self, $input) = @_;
 	my $tscfg = '';
 	for my $byte (split //, $input) {
 		my $descrambled = chr(ord($byte) ^ 0x88);
 		$tscfg .= $descrambled;
 	}
-	return $self->import_tscfg($tscfg);
+	my $ret = $self->load_header($tscfg);
+	$self->{format} = 'win';
+	return $ret;
 }
 
-sub import_tscfg {
+sub save_win {
+	my ($self) = @_;
+	my $tscfg = $self->save_header;
+	my $scrambled = '';
+	for my $byte (split //, $tscfg) {
+		$scrambled .= chr(ord($byte) ^ 0x88);
+	}
+	return $scrambled;
+}
+
+sub load_header {
 	my ($self, $input) = @_;
 	my ($cfg, $fw) = (0, '');
+	my @config;
 	for my $line (split /\n/, $input) {
-		if ($cfg and $line =~ /};/) {
+		if ($cfg > 0 and $line =~ /};/) {
 			$cfg = 0;
 		}
 		if ($line =~ /TS_CFG_DATA|GSLX68X_FW/) {
 			$cfg = 1;
 		}
-		if ($cfg) {
+		if ($cfg == 0 and $line =~ /gsl_config_data_id/) {
+			$cfg = 2;
+		}
+		if ($cfg == 1) {
 			$line =~ s/\s//g;
-			$line = lc($line);
+			$line = lc $line;
 			if ($line =~ /{0x([0-9a-f]+),0x([0-9a-f]+)},/) {
-				my $address = hex($1);
-				my $data = hex($2);
+				my $address = hex $1;
+				my $data = hex $2;
 				$fw .= pack '(LL)<', $address, $data;
+			}
+		} elsif ($cfg == 2) {
+			$line =~ s/\s//g;
+			$line =~ s#//.*$##;
+			$line = lc $line;
+			for my $str (split(',', $line)) {
+				if ($str =~ /0x([a-f0-9]+)/) {
+					my $value = unpack 'H*', $1;
+					push @config, $value;
+				} elsif ($str =~ /([a-f0-9]+)/) {
+					my $value = int $1;
+					push @config, $value;
+				}
 			}
 		}
 	}
-	return $self->import_fw($fw);
+	if (@config != 512) {
+		warn "Ignoring invalid config block";
+	} else {
+		$self->{config} = \@config;
+	}
+	my $ret = $self->import_fw($fw);
+	$self->{format} = 'win';
+	return $ret;
+}
+
+sub save_header {
+	my ($self) = @_;
+	my $tscfg = '';
+	$tscfg .= "\n";
+	$tscfg .= "unsigned int gsl_config_data_id[512]=\n";
+	$tscfg .= "{\n";
+	for (my $offset = 0; $offset < @{$self->{config}}; $offset += 4) {
+		$tscfg .= sprintf "\t0x%08x,0x%08x,0x%08x,0x%08x,\n", $self->{config}->[$offset..($offset+3)];
+	}
+	$tscfg .= "};\n";
+	$tscfg .= "TS_CFG_DATA GSL_TS_CFG[] =  {\n";
+	$tscfg .= "\n";
+	my @pages = $self->get_pages;
+	for my $page (@pages) {
+		my $pagedata = $self->get_page($page);
+		$tscfg .= sprintf "{0x%02x,0x%02x}\n", 0xf0, $page;
+		my $length = length $pagedata;
+		for (my $offset = 0; $offset + 3 < $length; $offset += 4) {
+			my $word = substr $pagedata, $offset, 4;
+			my $value = unpack '(L)<', $word;
+			$tscfg .= sprintf "{0x%02x,0x%08x}\n", $offset, $value;
+		}
+	}
+	$tscfg .= "\n";
+	$tscfg .= "};\n";
+	return $tscfg;
 }
 
 sub import_fw {

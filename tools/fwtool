@@ -9,81 +9,62 @@ use lib dirname (__FILE__);
 use Firmware::Silead;
 
 sub usage() {
-	print STDERR "Usage: fwtool {-i | -c <original.fw> | -s | -x <legacy.fw>} [ -1 | -2 | -3 ] [-w <width>] [-h <height>] [-t <num_touches>] [-f <flags>] <firmware.fw>\n";
-	print STDERR "-i    Prints statistics and information about new-style firmware.fw\n";
-	print STDERR "-c    Converts any older firmware format into new-style firmware.fw\n";
-	print STDERR "-s    Sets parameters and flags\n";
-	print STDERR "-x    Exports a firmware into plain format, to use with other Linux/Android drivers\n";
-	print STDERR "      The source firmware format can be specified with these parameters:\n";
-	print STDERR "-1    Plain firmware, as used with the Android driver (default)\n";
-	print STDERR "-2    Windows GSL_TS_CFG.h firmware\n";
-	print STDERR "-3    Scrambled Windows SileadTouch.fw firmware\n";
-	print STDERR "      For the -c and -s modes, the following parameters may be set:\n";
-	print STDERR "-m    Sets the controller model (4-byte ASCII string, ex.: 1680)\n";
-	print STDERR "-w    Sets the width parameter\n";
-	print STDERR "-h    Sets the height parameter\n";
-	print STDERR "-t    Sets the number of supported touch points parameter\n";
-	print STDERR "-f    Sets flags, separated by commas (optional, supported flags: xflip, yflip, swap, track)\n";
-	print STDERR "      xflip enables horizontal flipping\n";
-	print STDERR "      yflip enables vertical flipping\n";
-	print STDERR "      swap enables axis swapping\n";
-	print STDERR "      track enables in-driver finger tracking (use for controllers that don't support it)\n";
-	print STDERR "      Each flag may be prefixed with 'no' to disable it.\n";
+	print STDERR "Usage: fwtool [MODE] [INPUT] [MODIFIERS] [OUTPUT]\n";
+	print STDERR "[MODE] is one of:\n";
+	print STDERR "-r                (Read-only mode, default) Prints statistics and/or information about firmware\n";
+	print STDERR "-w                (Read-write mode) Writes a new firmware image, optionally setting flags\n";
+	print STDERR "[INPUT] specifies the input:\n";
+	print STDERR "-f [FORMAT]       (Optional, default: auto) Sets the input file format\n";
+	print STDERR "-i [FILE]         Specifies the input firmware file\n";
+	print STDERR "[MODIFIERS] can be any number of:\n";
+	print STDERR "-s [KEY]=[VALUE]  Sets flag KEY to VALUE\n";
+	print STDERR "[OUTPUT] specifies the output:\n";
+	print STDERR "-g [FORMAT]       (Optional, default: copy) Sets the output file format\n";
+	print STDERR "-o [FILE]         (Optional, input will be overwritten if omitted) Specifies the output firmware file\n";
+	print STDERR "[FORMAT] is one of:\n";
+	print STDERR "auto              (Only valid for input) Auto-detect firmware\n";
+	print STDERR "copy              (Only valid for output) Use the same format as input\n";
+	print STDERR "old               Old-style binary firmware, as used by the Android driver\n";
+	print STDERR "new               New-style binary firmware, as used by gslx680-acpi\n";
+	print STDERR "header            C header file containing a firmware image and calibration data\n";
+	print STDERR "win               Scrambled firmware, as used by the Windows driver\n";
+	print STDERR "[KEY] can be:\n";
+	print STDERR "model             A 4-character string describing the controller (ex.: 1680, default=    )\n";
+	print STDERR "width             The width of the touch panel, i.e. x coordinate maximum (0-4095, default=4095)\n";
+	print STDERR "height            The height of the touch panel, i.e. the y coordinate maximum (0-4095, default=4095)\n";
+	print STDERR "points            The number of supported touch points (1-10, default=10)\n";
+	print STDERR "track             Enables in-kernel finger tracking (1=enable, 0=disable, default=enable)\n";
+	print STDERR "xflip             Enables horizontal flipping (1=enable, 0=disable, default=disable)\n";
+	print STDERR "yflip             Enables vertical flipping (1=enable, 0=disable, default=disable)\n";
+	print STDERR "swap              Enables x-y axis swapping (1=enable, 0=disable, default=disable)\n";
 	-1;
 }
 
-my ($mode, $format, $tscfg, $model, $width, $height, $touches, $flags, $plain) = ('info', 'plain');
+my ($readwrite, $iformat, $ifile, $oformat, $ofile) = (0, 'auto', undef, 'copy', undef);
+my %flags;
 GetOptions(
-	'info' => sub { $mode = 'info'; },
-	'convert=s' => sub { $mode = 'convert'; $tscfg = $_[1]; },
-	'set' => sub { $mode = 'set'; },
-	'xport=s' => sub { $mode = 'export'; $plain = $_[1]; },
-	'model=s' => \$model,
-	'width=i' => \$width,
-	'height=i' => \$height,
-	'touches=i' => \$touches,
-	'flags=s' => \$flags,
-	'1' => sub { $format = 'plain' },
-	'2' => sub { $format = 'tscfg' },
-	'3' => sub { $format = 'scrambled' },
+	'read' => sub { $readwrite = 0; },
+	'write' => sub { $readwrite = 1; },
+	'f|iformat=s' => \$iformat,
+	'ifile=s' => \$ifile,
+	'g|oformat=s' => \$oformat,
+	'ofile=s' => \$ofile,
+	'set=s%' => $flags,
 ) or exit usage;
 
-my $fwfile = $ARGV[0] or exit usage;
+defined $ifile or exit usage;
 
-sub set_params {
-	my ($rep) = @_;
-	if (defined $model) {
-		$rep->set_model($model);
-	}
-	if (defined $width) {
-		$rep->set_width($width);
-	}
-	if (defined $height) {
-		$rep->set_height($height);
-	}
-	if (defined $touches) {
-		$rep->set_touches($touches);
-	}
-	if (defined $flags) {
-		for my $flag (split /,\s*/, $flags) {
-			if ($flag =~ /^(no)?xflip$/) {
-				$rep->set_xmirrored($flag !~ /^no/);
-			} elsif ($flag =~ /^(no)?yflip$/) {
-				$rep->set_ymirrored($flag !~ /^no/);
-			} elsif ($flag =~ /^(no)?swap$/) {
-				$rep->set_swapped($flag !~ /^no/);
-			} elsif ($flag =~ /^(no)?track$/) {
-				$rep->set_tracking($flag !~ /^no/);
-			} else {
-				warn "Invalid flag: $flag";
-			}
-		}
+print "Loading $ifile...\n";
+my $rep = Firmware::Silead->load_as($ifile, $iformat);
+if (!defined($rep)) {
+	if ($iformat eq 'auto') {
+		die "Can't autodetect format of $ifile - is this really a firmware image?";
+	} else {
+		die "Invalid input - can't load $ifile as type $iformat (or $iformat is not a valid format)";
 	}
 }
 
-if ($mode eq 'info') {
-	print "Loading $fwfile...\n";
-	my $rep = Firmware::Silead->load($fwfile) or die "Can't load firmware $fwfile: $@";
+if (!$readwrite) {
 	print "Controller model: " . $rep->model . "\n";
 	print "Panel width: " . $rep->width . "\n";
 	print "Panel height: " . $rep->height . "\n";
@@ -99,45 +80,29 @@ if ($mode eq 'info') {
 		printf " %02x", $page;
 	}
 	print "\n";
-} elsif ($mode eq 'set') {
-	print "Loading $fwfile...\n";
-	my $rep = Firmware::Silead->load($fwfile) or die "Can't load firmware $fwfile: $@";
-	print "Setting parameters...\n";
-	set_params($rep);
-	print "Saving $fwfile...\n";
-	$rep->save($fwfile);
-} elsif ($mode eq 'convert') {
-	print "Loading $tscfg...\n";
-	my $data;
-	do {
-		my $in = IO::File->new($tscfg, 'r') or die "Can't open $tscfg: $!";
-		$in->binmode;
-		local $/ = undef;
-		$data = <$in>;
-		defined($data) or die "Can't load firmware: $!";
-		$in->close();
-	};
-	
-	my $rep = Firmware::Silead->new();
-	if ($format eq 'plain') {
-		$rep->import_fw($data) or die "Can't parse firmware: $@";
-	} elsif ($format eq 'tscfg') {
-		$rep->import_tscfg($data) or die "Can't parse firmware: $@";
-	} elsif ($format eq 'scrambled') {
-		$rep->import_scrambled($data) or die "Can't parse firmware: $@";
-	}
-	
-	print "Setting parameters...\n";
-	set_params($rep);
-
-	print "Saving $fwfile...\n";
-	$rep->save($fwfile) or die "Can't write firmware: $@";
-} elsif ($mode eq 'export') {
-	print "Loading $fwfile...\n";
-	my $rep = Firmware::Silead->load($fwfile) or die "Can't load firmware $fwfile: $@";
-	print "Exporting to $plain...\n";
-	my $out = IO::File->new($plain, 'w') or die "Can't open $plain: $!";
-	my $data = $rep->export_fw();
-	$out->print($data) or die "Can't write firmware: $!";
-	$out->close();
 }
+
+if ($readwrite) {
+	print "Setting parameters...\n" unless !int %flags;
+	for my $key (keys(%flags)) {
+		$rep->set_param($key, $flags{$key});
+	}
+
+	if ($oformat eq 'copy') {
+		# TODO does not work for auto, implement better detection api
+		$oformat = $iformat;
+	}
+	print "Saving $ofile...\n";
+	if (!$rep->save_as($ofile, $oformat)) {
+		die "Error saving to $ofile";
+	}
+}
+
+do {
+	my $in = IO::File->new($tscfg, 'r') or die "Can't open $tscfg: $!";
+	$in->binmode;
+	local $/ = undef;
+	$data = <$in>;
+	defined($data) or die "Can't load firmware: $!";
+	$in->close();
+};
