@@ -5,7 +5,7 @@ voyo/at13
 |---------------------------|-------------|
 | Manufacturer              | Voyo |
 | Device                    | Voyo VBOOK A1 (AT13) |
-| Website                   | http://www.myvoyo.com/xiazai/Win%20Pad/VBOOK%20A1/ |
+| Website                   | http://en.myvoyo.com/chanpin/602.shtml |
 | Vendor driver (Windows)   | https://pan.baidu.com/share/init?surl=kUU2VSr (Passwd: `1eeq`) |
 | Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | N/A |
