@@ -34,4 +34,5 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3670-itworks-tw891.fw               | I.T.Works TW891 2-in-1s |
 | gsl3670-surftab-twin-10-1-st10432-8.fw | TrekStor SurfTab twin 10.1 ST10432-8 tablets |
 | gsl3676-jumper-ezpad-mini3.fw          | Jumper EZpad mini3 tablets |
+| gsl3680-chuwi-hi8-pro.fw               | Chuwi Hi8 Pro tablets |
 | gsl3692-pov-mobii-wintab-p800w.fw      | Point of View mobii Wintab P800w tablets |
