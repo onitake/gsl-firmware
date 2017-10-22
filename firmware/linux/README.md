@@ -36,4 +36,4 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3676-jumper-ezpad-mini3.fw          | Jumper EZpad mini3 tablets |
 | gsl3680-chuwi-hi8-pro.fw               | Chuwi Hi8 Pro tablets |
 | gsl3692-pov-mobii-wintab-p800w.fw      | Point of View mobii Wintab P800w tablets |
-| gsl1686-digma_citi_e200.fw             | Digma Citi E200 (ES2000EW) \
+| gsl1686-digma_citi_e200.fw             | Digma Citi E200 tablets |
