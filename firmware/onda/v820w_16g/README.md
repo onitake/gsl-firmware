@@ -1,4 +1,4 @@
-onda/v891w
+onda/v820w
 ----------
 
 | Item | Description |
