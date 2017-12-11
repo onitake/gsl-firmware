@@ -44,6 +44,7 @@ Device list
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 | Onda          | V820w 16G                       | yes     | [firmware/onda/v820w_16g](firmware/onda/v820w_16g)             |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
+| Onda          | oBook 20 Plus                   | no      | [firmware/onda/obook_20_plus](firmware/onda/obook_20_plus)     |
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
 | jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
