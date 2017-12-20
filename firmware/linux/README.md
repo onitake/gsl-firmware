@@ -33,6 +33,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3670-cube-iwork8-air.fw             | Cube iWork8 Air tablets |
 | gsl3670-itworks-tw891.fw               | I.T.Works TW891 2-in-1s |
 | gsl3670-surftab-twin-10-1-st10432-8.fw | TrekStor SurfTab twin 10.1 ST10432-8 tablets |
+| gsl3676-chuwi-vi8.fw                   | Chuwi Vi8 (CWI506) tablets |
 | gsl3676-jumper-ezpad-mini3.fw          | Jumper EZpad mini3 tablets |
 | gsl3676-onda-obook-20-plus.fw          | Onda oBook 20 Plus tablets |
 | gsl3680-chuwi-hi8-pro.fw               | Chuwi Hi8 Pro tablets |
