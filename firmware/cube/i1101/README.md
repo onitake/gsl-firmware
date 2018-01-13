@@ -19,7 +19,7 @@ Cube/i1101
 | Axes swapped              | No |
 | Comments                  | `fwtool -c firmware.fw_1 -m 1680 -w 1940 -h 1500 -t 10 -f track silead_ts.fw` |
 
-Firmware extracted from windows driver file, using the following method from [edward-p/mssl1680-firmware]
+Firmware extracted from windows driver file, using the following method from [https://github.com/edward-p/mssl1680-firmware](edward-p/mssl1680-firmware)
 
 ```
 export F=SileadTouch.sys                                                                                                                                      :(
