@@ -5,8 +5,8 @@ Cube/i1101
 |---------------------------|-------------|
 | Manufacturer              | Cube(ALLDOCUBE) |
 | Device                    | KNote(i1101) |
-| Website                   | [http://51cube.com/knote.html](Product Homepage) |
-| Vendor driver (Windows)   | [windows/SileadTouch.sys](SileadTouch.sys), *Read instructions below.*|
+| Website                   | [Product Homepage](http://51cube.com/knote.html) |
+| Vendor driver (Windows)   | [SileadTouch.sys](windows/SileadTouch.sys), *Read instructions below.*|
 | Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | 1920x1080 |
@@ -19,7 +19,7 @@ Cube/i1101
 | Axes swapped              | No |
 | Comments                  | `fwtool -c firmware.fw_1 -m 1680 -w 1940 -h 1500 -t 10 -f track silead_ts.fw` |
 
-Firmware extracted from windows driver file, using the following method from [https://github.com/edward-p/mssl1680-firmware](edward-p/mssl1680-firmware)
+Firmware extracted from windows driver file, using the following method from [edward-p/mssl1680-firmware](https://github.com/edward-p/mssl1680-firmware)
 
 ```
 export F=SileadTouch.sys                                                                                                                                      :(
