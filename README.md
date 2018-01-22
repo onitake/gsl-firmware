@@ -47,6 +47,7 @@ Device list
 | Onda          | oBook 20 Plus                   | yes     | [firmware/onda/obook_20_plus](firmware/onda/obook_20_plus)     |
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
+| Cube          | KNote (i1101)                   | yes     | [firmware/cube/i1101](firmware/cube/i1101)                     |
 | jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
 | jumper        | EZpad 6                         | yes     | [firmware/jumper/EZpad_6](firmware/jumper/EZpad_6)             |
 | jumper        | EZpad 6(S) Pro                  | yes     | [firmware/jumper/EZpad_6_pro](firmware/jumper/EZpad_6_pro)     |
