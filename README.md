@@ -56,6 +56,7 @@ Device list
 | DEXP          | Ursus 7W Rev.1                  | yes     | [firmware/dexp/ursus7w-rev1](firmware/dexp/ursus7w-rev1)       |
 | DEXP          | Ursus 7W Rev.2                  | yes     | [firmware/dexp/ursus7w-rev1](firmware/dexp/ursus7w-rev2)       |
 | Teclast       | X3 Plus                         | yes     | [firmware/teclast/x3_plus](firmware/teclast/x3_plus)           |
+| Teclast       | X5 Pro                          | yes     | [firmware/teclast/x5_pro](firmware/teclast/x5_pro)             |
 
 
 
