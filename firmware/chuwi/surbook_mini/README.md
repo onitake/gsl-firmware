@@ -1,4 +1,4 @@
-<Chuwi>/<SurBook mini>
+Chuwi/SurBook mini
 ---------------------------------------------
 
 | Item                      | Description |
