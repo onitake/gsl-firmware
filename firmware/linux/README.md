@@ -41,3 +41,4 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3692-pov-mobii-wintab-p800w.fw      | Point of View mobii Wintab P800w tablets |
 | gsl1686-digma_citi_e200.fw             | Digma Citi E200 tablets |
 | gsl1680-teclast-x3-plus.fw             | Teclast X3 Plus tablets |
+| gsl1680-trekstor-primebook-c13.fw      | Trekstor Primebook C13 (convertible) |
