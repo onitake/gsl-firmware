@@ -18,3 +18,10 @@ Chuwi/SurBook mini
 | Mirrored vertically       | Yes |
 | Axes swapped              | No |
 | Comments | tools/fwtool -c firmware.fw -m 1680 -w 2040 -h 1524 -t 10 -f yswap silead_ts.fw |
+
+You'll need to calibrate your touch panel before use.
+
+As of late 2017, the usual calibration methods using "xinput_calibrator" won't work anymore in modern Linux distros. This is mainly because they now use the "libinput" libraries to handle input devices instead of the "xinput" libraries.
+
+This page on the Arch Linux Wiki, and more precisely the discussion about the article is the most helpful online resource I could find on the subject:
+https://wiki.archlinux.org/index.php/Talk:Calibrating_Touchscreen
