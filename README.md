@@ -62,6 +62,15 @@ Device list
 | Proworx       | MX049                           | yes     | [firmware/proworx/mx049](firmware/proworx/mx049)             |
 
 
+Kernel Modules
+--------------
+
+There are two different kernel modules, the new upstream `silead.ko` module, included in mainline kernel 4.8+.
+And the other module `gslx680-acpi` which is depricated and not supported any more.
+It is recommend to use the new mainline module if posible
+
+For using the mainline module see [firmware/linux](firmware/linux)
+
 
 Adding new firmware
 -------------------
