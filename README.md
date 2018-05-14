@@ -1,5 +1,4 @@
-gsl-firmware
-============
+# gsl-firmware
 
 This repository contains firmware images for the Silead
 touchscreen controllers in various tablet (and other) devices.
@@ -18,14 +17,11 @@ for more information.
 
 In contrast, everything in the tools directory is published under
 the GNU General Public license v2, as laid out in
-[tools/LICENSE](tools/LICENSE).
-
-See below for instructions on how to submit firmware for a
-new device.
+[tools/LICENSE](tools/LICENSE). See [tools/AUTHORS.md](tools/AUTHORS.md)
+for copyright information.
 
 
-Device list
------------
+## Device list
 
 | Manufacturer  | Device                          | Tested  | Firmware                                                       |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|
@@ -63,8 +59,7 @@ Device list
 
 
 
-Adding new firmware
--------------------
+## Adding new firmware
 
 To request new firmware to be added to the list, please send a
 pull request with the following structure:
@@ -78,14 +73,16 @@ pull request with the following structure:
   firmware. See [firmware/README.md.template](firmware/README.md.template)
   for an example with explanations.
 - `firmware/<manufacturer>/<device>/silead.fw`
-  (optional) The extracted firmware in legacy format, as
-  created by fw_extractor, untscfg or unscramble (see below)
+  (optional) The extracted firmware, as created by fw_extractor,
+  untscfg, unscramble or scanwindrv. (see below)
+- `firmware/linux/gsl1680-<manufacturer>-<device>.fw`
+  (optional) The same file as silead.fw, for use with the silead.ko driver
+  that is part of the Linux kernel. (see below)
 - `firmware/<manufacturer>/<device>/silead_ts.fw`
-  (optional) Firmware created by fwtool (see below)
-  using correct parameters.
+  (optional) Firmware created by fwtool using correct parameters. (see below)
+  For use with the alternative gslx680_ts_acpi driver.
 - `README.md`
-  A patch to this readme file that adds an entry to the
-  device list.
+  A patch to this readme file that adds an entry to the device list.
 
 The "Tested" field should only be "Yes" if you have confirmed that
 the converted firmware works with silead_ts.ko or gslx680_ts_acpi.ko
@@ -93,18 +90,20 @@ and the touchscreen responds properly, i.e. the device parameters
 are good.
 
 
-Firmware formats
-----------------
+## Extracting firmware
 
 Original vendor firmware comes in various formats, depending
 on the operating system and driver version.
 
-The Android driver can be found under this path (or similar):
+
+### Android driver
+
+The official Android driver can be found under this path (or similar):
 /system/vendor/modules/gslx680.ko
-Copy this to a SD card or use a GNU/Linux chroot to scp it over, or use
-adb pull.
-On your build machine, on the command line, use the script
-'firmware/fw_extractor' to extract the firmware to its own file.
+Copy this file to an SD card, use a file transfer utility, or use `adb pull`.
+
+On your build machine, use the script 'firmware/fw_extractor' from the command
+line to extract the firmware from the driver:
 
     tools/fw_extractor my_android_gslx680.ko
 
@@ -115,43 +114,130 @@ knowing which is right for your device. You will have to try each.
 Sometimes, the file names will give a clue, like panel size, product
 name, resolution or chip name. Test the matching ones first.
 
+
+### Windows driver
+
 If you have a Windows driver instead, the firmware either comes in
 the form of a file named GSL_TS_CFG.h (or similar) or SileadTouch.fw.
 The latter is just a scrambled version of GSL_TS_CFG.h and can be easily
 restored by XORing every byte with 0x88.
 
-To convert GSL_TS_CFG.h into a binary firmware, use:
+To convert GSL_TS_CFG.h to binary, use:
 
     tools/untscfg GSL_TS_CFG.h firmware.fw
 
-And for a scrambled SileadTouch.fw:
+For a scrambled SileadTouch.fw, use:
 
     tools/unscramble SileadTouch.fw firmware.fw
 
 If your vendor only supplied a Windows driver and no separate
 firmware, you can still extract the firmware blob that is contained
-inside. This requires some manual work in a hex editor, however.
+inside.
 
-Search for the hex sequence F0 00 00 00, followed by a 32 bit
-number of the form xx 00 00 00 (i.e. an 8 bit value in a little
-endian 32 bit word) and lots of yy 00 00 00 zz zz zz zz word pairs
-(where yy is counting from 00 to 7C and zz is any hex code).
-There are normally several blocks of data with the same pattern that
-follow. Copy all of them into a new file and call it firmware.fw.
-This should be the firmware image for your device.
+Use the scanwindrv script to extract it:
 
-See [here](firmware/trekstor/surftab-twin-10.1-ST10432-8/README.md#command-to-find-the-offsets-used-for-extraction) for an example with some help from grep and dd.
+    tools/scanwindrv SileadTouch.sys
+
+As with the Android driver, this may produce multiple firmware files named
+firmware_00.fw, firmware_01.fw, etc. - you have to test them to find the
+correct one for your device.
 
 
-gslx680-acpi
-------------
+## Usage
+
+There are currently two open-source drivers available for Silead chips:
+silead_ts and gslx680_ts_acpi.
+
+silead_ts ships with the Linux kernel since version 4.8 and is the recommended
+driver. gslx680_ts_acpi can still be useful for initial testing or if silead_ts
+does not work for you.
+
+When Silead touchscreen support was added to ACPI (PC) platforms, the
+integrator did not anticipate any uses cases outside the device vendor's
+ecosystems. For this reason, it is required to pass additional
+device parameters to the driver that are neither contained in the firmware
+nor in the ACPI DSDT. silead_ts handles this in the kernel, using an
+ACPI override/quirk table, while gslx680_ts_acpi expects firmware in a
+different format that contains this information.
+
+Since silead_ts requires a kernel modification (and thus a reboot or kexec)
+whenever parameters are changed, testing is easier with gslx680_ts_acpi.
+There, parameters can be changed in the firmware, then updated by unloading and
+reloading the kernel module.
+
+After the device parameters are known, you should add support to silead_ts
+and submit a kernel patch to the
+[linux-input mailing list](http://vger.kernel.org/vger-lists.html#linux-input).
+
+
+### silead_ts
+
+First, decide on a unique name for the firmware. The recommended format is:
+`gsl<chip name>-<manufacturer>-<device>.fw`
+If you don't know the chip name, use gsl1680. Manufacturer and device name
+should be shortened to make the name readable, but still sufficiently unique.
+
+Fetch the current Linux source code and open `drivers/platform/x86/silead_dmi.c`
+in a text editor.
+
+Supposing you named your firmware `gsl1680-mycompany-mytablet.fw` and the
+touchscreen has a resolution of 128x128 points, add a new section to the file:
+
+```c
+static const struct property_entry mycompany_mytablet_props[] = {
+	PROPERTY_ENTRY_U32("touchscreen-size-x", 128),
+	PROPERTY_ENTRY_U32("touchscreen-size-y", 128),
+	PROPERTY_ENTRY_STRING("firmware-name", "gsl1680-mycompany_mytablet.fw"),
+	PROPERTY_ENTRY_U32("silead,max-fingers", 10),
+	{ }
+};
+
+static const struct silead_ts_dmi_data mycompany_mytablet_data = {
+	.acpi_name	= "MSSL1680:00",
+	.properties	= mycompany_mytablet_props,
+};
+```
+
+In some rare cases, the `acpi_name` may be different.
+
+Further below, there is a list named `silead_ts_dmi_table`:
+```c
+static const struct dmi_system_id silead_ts_dmi_table[] = {
+```
+
+Add a new entry to this list:
+```c
+	{
+		/* Teclast X3 Plus */
+		.driver_data = (void *)&mycompany_mytablet_data,
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "MyCompany"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "MyTablet"),
+			DMI_MATCH(DMI_BOARD_NAME, "Generic Board"),
+		},
+	},
+```
+
+The exact values and suitable matching tags depend on the particular device.
+You can find them with the help of `dmidecode`.
+Look for the section called "System Information".
+
+[See here for an example patch](https://patchwork.kernel.org/patch/10179961/).
+
+After adding the override tables, you have to recompile your kernel,
+as the DMI overrides are outside the context of the driver. Install and reboot.
+You may also try reloading the kernel using `kexec`, but this can lead to an
+unstable system and is not recommended.
+
+
+### gslx680_ts_acpi
 
 The [gslx680-acpi](https://github.com/onitake/gslx680-acpi) driver
-requires firmware in a special, more compact format.
+requires firmware in a special compact format.
 
 Use [firmware/fwtool](firmware/fwtool) to convert regular firmware
-into this format. The tool will also set some non-generic
-device parameters, such as panel width and height, tracking support, etc.
+into this format. The tool will also store device parameters (such as
+such as panel width and height, tracking support, etc.) inside the firmware.
 
 The file format is described in 'firmware/Firmware/Silead.pm'.
 Use perldoc or a text editor to read.
