@@ -1,0 +1,129 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+require 5.018;
+use IO::File;
+
+sub usage() {
+	print(STDERR "Usage: scanwindrv SileadTouch.sys\n");
+	print(STDERR "Scans a Windows driver for sections that look like a firmware image and\n");
+	print(STDERR "writes each into sequentially numbered files: firmware_01.fw firmware_02.fw ...\n");
+	-1;
+}
+
+my $drvfile = $ARGV[0] or exit usage;
+
+my $driver = '';
+do {
+	my $in = IO::File->new($drvfile, 'r') or die "Can't open $drvfile: $!";
+	$in->binmode();
+	local $/;
+	$driver = <$in>;
+	defined $driver or die "Can't read firmware: $!";
+	$in->close();
+};
+
+my $candidate = 0;
+
+# find candidates
+for (my $offset = 0; $offset + 8 <= length($driver); $offset++) {
+
+	my ($cmd, $page) = unpack('(LL)<', substr($driver, $offset, 8));
+	if ($cmd == 0x000000f0 && ($page & 0xffffff00) == 0x00000000) {
+		printf(STDERR "Found possible candidate at offset 0x%08x\n", $offset);
+		# possible candidate, start copying pages
+
+		my $firmware = '';
+		my $size;
+		FIRMWARE: for ($size = 0; $offset + $size + 129 * 8 <= length($driver);) {
+
+			#printf(STDERR "offset=0x%08x size=%u[0x%08x]\n", $offset, $size, $size);
+			my ($cmd, $page) = unpack('(LL)<', substr($driver, $offset + $size, 8));
+			#printf(STDERR "Page header at 0x%08x: [0x%02x, 0x%08x]\n", $offset + $size, $cmd, $page);
+
+			# if this doesn't look like a page register - page pair, we're done
+			if ($cmd != 0x000000f0 || ($page & 0xffffff00) != 0x00000000) {
+				last FIRMWARE;
+			}
+
+			for (my $index = 0; $index + 4 <= 128; $index += 4) {
+				my ($idx, $dat) = unpack('(LL)<', substr($driver, $offset + $size + 8 + $index * 2, 8));
+				#printf(STDERR "Data at 0x%08x: [0x%02x, 0x%02x]\n", $offset + $size + 8 + $index * 2, $idx, $dat);
+
+				# if the index is not sequential, this is probably not part of the fw and we're done
+				if ($idx != $index) {
+					#printf(STDERR "Expected index 0x%02x, got 0x%02x\n", $index, $idx);
+					last FIRMWARE;
+				}
+			}
+
+			# one page complete, copy
+			substr($firmware, $size, 33 * 8) = substr($driver, $offset + $size, 33 * 8);
+			$size += 33 * 8;
+		}
+
+		# check if we have enough data
+		if (length($firmware) > 8) {
+			my $fwname = sprintf("firmware_%02u.fw", $candidate);
+			printf(STDERR "Writing firmware to %s, size = %u bytes\n", $fwname, length($firmware));
+			my $out = IO::File->new($fwname, 'w', 0666) or die "Can't open $fwname: $!";
+			$out->binmode();
+			print($out $firmware);
+			$out->close();
+			$candidate++;
+		} else {
+			printf(STDERR "Not a firmware, ignoring\n");
+		}
+
+		# skip ahead
+		$offset += $size;
+	}
+}
+
+=cut
+export F=SileadTouch.sys
+cat $F \
+    | hexdump -e '1/1  "0x%8.8_ax    "' -e '1/1  "%8._ad    "' -e '8/1 "%02X ""\n"""' \
+    | grep -i -E "F0 00 00 00 02 00 00 00|7C 00 00 00 .. .. .. .." \
+    | grep "F0 00 00 00 02 00 00 00" -B1 \
+    ; \
+echo -- \
+    ; \
+cat $F \
+    | hexdump -e '1/1  "0x%8.8_ax    "' -e '1/1  "%8._ad    "' -e '8/1 "%02X ""\n"""' \
+    | grep -i -E "F0 00 00 00 02 00 00 00|7C 00 00 00 .. .. .. .." \
+    | tail -n2
+
+cat <<EOF
+Search for the hex sequence F0 00 00 00, followed by a 32 bit
+number of the form xx 00 00 00 (i.e. an 8 bit value in a little
+endian 32 bit word) and lots of yy 00 00 00 zz zz zz zz word pairs
+(where yy is counting from 00 to 7C and zz is any hex code).
+There are normally several blocks of data with the same pattern that
+follow. Copy all of them into a new file and call it firmware.fw.
+This should be the firmware image for your device.
+EOF
+
+cat <<EOF
+0x00009540       38208    7C 00 00 00 00 00 00 01
+0x00009548       38216    F0 00 00 00 02 00 00 00   (start fw_1)
+--
+0x0000b010       45072    7C 00 00 00 00 00 00 00   (end fw_1)
+0x0000b818       47128    F0 00 00 00 02 00 00 00   (start fw_2)
+--
+0x000152c0       86720    7C 00 00 00 30 32 3A 32   (end fw_2)
+0x00015ac8       88776    F0 00 00 00 02 00 00 00   (start fw_3)
+--
+0x0001f570      128368    7C 00 00 00 30 32 3A 32   (end fw_3)
+0x0001fd78      130424    F0 00 00 00 02 00 00 00   (start fw_4)
+--
+0x00029b38      170808    7C 00 00 00 30 32 3A 32   (end fw_4)
+0x0002b468      177256    7C 00 00 00 01 30 07 30
+EOF
+
+dd bs=1 if=$F of=firmware.fw_1 skip=38216  count=$(( 45072 -  38216 + 8))
+dd bs=1 if=$F of=firmware.fw_2 skip=47128  count=$(( 86720 -  47128 + 8))
+dd bs=1 if=$F of=firmware.fw_3 skip=88776  count=$((128368 -  88776 + 8))
+dd bs=1 if=$F of=firmware.fw_4 skip=130424 count=$((170808 - 130424 + 8))
+
