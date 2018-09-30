@@ -46,3 +46,4 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1686-digma_citi_e200.fw             | Digma Citi E200 tablets |
 | gsl1680-teclast-x3-plus.fw             | Teclast X3 Plus tablets |
 | gsl1680-trekstor-primebook-c13.fw      | Trekstor Primebook C13 (convertible) |
+| gsl1680-trekstor-primetab-t13b.fw      | Trekstor Primetab T13B tablet |
