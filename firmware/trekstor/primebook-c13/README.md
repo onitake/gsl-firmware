@@ -7,7 +7,7 @@ trekstor/surftab7new
 | Device                  | Primebook C13            |
 | Website                 | http://www.trekstor.de/produkte/2in1/detail-2in1/product/496.html |
 | Vendor driver (Windows) | http://www.trekstor.de/produkte/2in1/detail-2in1/product/496.html?file=files/userFiles/products/primebook_c13/Primebook-C13.zip | Driver package 400M (relevant dirver in `Primebook-C13_2017-11-20/sileadtouch.inf` |
-| Extracted firmware      | |
+| Extracted firmware      | https://github.com/onitake/gsl-firmware/raw/master/firmware/linux/silead/gsl1680-trekstor-primebook-c13.fw |
 | Firmware for gslx680-acpi | |
 | Display resolution      | 1920x1080 |
 | Touch panel resolution  |  |
