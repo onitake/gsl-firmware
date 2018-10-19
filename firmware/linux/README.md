@@ -37,6 +37,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3676-chuwi-vi8.fw                   | Chuwi Vi8 (CWI506) tablets |
 | gsl3676-jumper-ezpad-mini3.fw          | Jumper EZpad mini3 tablets |
 | gsl3676-onda-obook-20-plus.fw          | Onda oBook 20 Plus tablets |
+| gsl3676-onda-v80-plus-v3.fw            | Ondo V80 Plus v3 tablets |
 | gsl3680-chuwi-hi8-pro.fw               | Chuwi Hi8 Pro (CWI513) tablets |
 | gsl3680-chuwi-vi10.fw                  | Chuwi Vi10 (CWI505) tablets |
 | gsl3680-onda-v891w-v1.fw               | Onda V891w (v1) tablets |
