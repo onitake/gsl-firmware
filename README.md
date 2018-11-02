@@ -62,8 +62,7 @@ for copyright information.
 | Teclast       | X5 Pro                          | yes     | [firmware/teclast/x5_pro](firmware/teclast/x5_pro)             |
 | Proworx       | MX049                           | yes     | [firmware/proworx/mx049](firmware/proworx/mx049)               |
 | Insignia      | Flex 11                         | yes     | [firmware/insignia/flex11](firmware/insignia/flex11)           |
-| iLife		| ZedBook 2			  | yes	    | 
-[firmware/iLife/ZedBook_2](firmware/iLife/ZedBook_2)		|
+| iLife		| ZedBook 2			  | yes	    | [firmware/iLife/ZedBook_2](firmware/iLife/ZedBook_2)           |
 
 
 ## Adding new firmware
