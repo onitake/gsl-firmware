@@ -27,6 +27,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3675-ga10h.fw                       | Allwinner A33 10" tablets with ga10h mainboard |
 | gsl3675-gt90h.fw                       | Allwinner A23 9" tablets with ga10h mainboard |
 | gsl1680-chuwi-hi8.fw                   | Chuwi Hi8 tablets |
+| gsl1680-chuwi-hi10-air.fw              | Chuwi Hi10 Air tablets |
 | gsl1680-chuwi-hi10-pro.fw              | Chuwi Hi10 Pro tablets |
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1680-pipo-w2s.fw                    | Pipo W2S tablets |
