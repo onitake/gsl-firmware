@@ -53,7 +53,8 @@ for copyright information.
 | jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
 | jumper        | EZpad 5SE                       | no      | [firmware/jumper/EZpad_5SE](firmware/jumper/EZpad_5SE)         |
 | jumper        | EZpad 6                         | yes     | [firmware/jumper/EZpad_6](firmware/jumper/EZpad_6)             |
-| jumper        | EZpad 6(S) Pro                  | yes     | [firmware/jumper/EZpad_6_pro](firmware/jumper/EZpad_6_pro)     |
+| jumper        | EZpad 6(S) Pro a                | yes     | [firmware/jumper/EZpad_6_pro_a](firmware/jumper/EZpad_6_pro_a) |
+| jumper        | EZpad 6(S) Pro b                | yes     | [firmware/jumper/EZpad_6_pro_b](firmware/jumper/EZpad_6_pro_b) |
 | 4Good         | T803i                           | no      | [firmware/4good/t803i](firmware/4good/t803i)                   |
 | Voyo          | VBOOK A1                        | yes     | [firmware/voyo/at13](firmware/voyo/at13)                       |
 | Voyo          | VBOOK V3Pro                     | no      | [firmware/voyo/vbook_v3pro](firmware/voyo/vbook_v3pro)         |
