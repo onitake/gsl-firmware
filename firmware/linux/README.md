@@ -47,6 +47,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3680-onda-v891w-v1.fw               | Onda V891w (v1) tablets |
 | gsl3680-pov-mobii-wintab-p800w-v20.fw  | Point of View mobii Wintab P800w (v2.0) tablets |
 | gsl3692-pov-mobii-wintab-p800w.fw      | Point of View mobii Wintab P800w (v2.1) tablets |
+| gsl3692-pov-mobii-wintab-p1006w-v10.fw | Point of View mobii Wintab P1006w (v1.0) tablets |
 | gsl1686-digma_citi_e200.fw             | Digma Citi E200 tablets |
 | gsl1680-teclast-x3-plus.fw             | Teclast X3 Plus tablets |
 | gsl1680-trekstor-primebook-c13.fw      | Trekstor Primebook C13 (convertible) |
