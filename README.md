@@ -185,7 +185,8 @@ If you don't know the chip name, use gsl1680. Manufacturer and device name
 should be shortened to make the name readable, but still sufficiently unique.
 
 Fetch the current Linux source code and open `drivers/platform/x86/silead_dmi.c`
-in a text editor.
+in a text editor. Since Linux kernel 4.19, this file is called
+`drivers/platform/x86/touchscreen_dmi.c`.
 
 Supposing you named your firmware `gsl1680-mycompany-mytablet.fw` and the
 touchscreen has a resolution of 128x128 points, add a new section to the file:
