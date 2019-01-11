@@ -32,6 +32,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1680-pipo-w2s.fw                    | Pipo W2S tablets |
 | gsl1686-surftab-wintron70-st70416-6.fw | Trekstor Surftab Wintron 7.0 ST70416-6 tablets |
+| gsl1686-teclast_x98plus2.fw            | Teclast X98 Plus II tablets |
 | gsl3670-cube-iwork8-air.fw             | Cube iWork8 Air tablets |
 | gsl3670-itworks-tw891.fw               | I.T.Works TW891 2-in-1s |
 | gsl3670-surftab-twin-10-1-st10432-8.fw | TrekStor SurfTab twin 10.1 ST10432-8 tablets |
