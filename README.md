@@ -258,27 +258,31 @@ unstable system and is not recommended.
 
 ```sudo make clean```
 
-#5)
+#5)edit the touchscreen_dmi.c file and add entries as described in section silead_ts
+
+sudo nano ./drivers/platform/x86/touchscreen_dmi.c
+
+#6)
 
 ```sudo make menuconfig```
 
-#6) enable
+#7) enable
 
 Device Drivers  --->X86 Platform Specific Device Drivers  --->DMI based touchscreen configuration info
 
-#7)
+#8)
 
 save .config and exit
 
-#8) compilation will take a long time - 3 hours+ on the tablet, using only two threads because otherwise it overheats
+#9) compilation will take a long time - 3 hours+ on the tablet, using only two threads because otherwise it overheats
 
 ```sudo make -j2 deb-pkg```
 
-#9)
+#10)
 
 ```cd ..```
 
-#10) install the debian packages of the compiled kernel
+#11) install the debian packages of the compiled kernel
 
 ```sudo dpkg -i linux-libc-dev_4.20.2-1_amd64.deb ```
 
@@ -288,15 +292,15 @@ save .config and exit
 
 ```sudo dpkg -i linux-image-4.20.2-dbg_4.20.2-1_amd64.deb```
 
-#11) add entry for the new kernel version in grub
+#12) add entry for the new kernel version in grub
 
 ```sudo update-grub```
 
-#12 copy driver for your device from this repository to
+#13) copy driver for your device from this repository to
 
 ```cp ./tablet-name-driver.fw /lib/firmware/silead/tablet-name-driver.fw```
 
-#12) reboot and select linux 4.20 in grub
+#14) reboot and select linux 4.20 in grub
 
 ```reboot```
 
