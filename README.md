@@ -278,7 +278,7 @@ save .config and exit
 
 ```cd ..```
 
-#10)
+#10) install the debian packages of the compiled kernel
 
 ```sudo dpkg -i linux-libc-dev_4.20.2-1_amd64.deb ```
 
@@ -288,7 +288,7 @@ save .config and exit
 
 ```sudo dpkg -i linux-image-4.20.2-dbg_4.20.2-1_amd64.deb```
 
-#11)
+#11) add entry for the new kernel version in grub
 
 ```sudo update-grub```
 
@@ -296,7 +296,7 @@ save .config and exit
 
 ```cp ./tablet-name-driver.fw /lib/firmware/silead/tablet-name-driver.fw```
 
-#12) reboot select linux 4.20
+#12) reboot and select linux 4.20 in grub
 
 ```reboot```
 
