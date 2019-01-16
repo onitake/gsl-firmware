@@ -281,8 +281,11 @@ save .config and exit
 #10)
 
 ```sudo dpkg -i linux-libc-dev_4.20.2-1_amd64.deb ```
+
 ```sudo dpkg -i linux-headers-4.20.2_4.20.2-1_amd64.deb ```
+
 ```sudo dpkg -i linux-image-4.20.2_4.20.2-1_amd64.deb```
+
 ```sudo dpkg -i linux-image-4.20.2-dbg_4.20.2-1_amd64.deb```
 
 #11)
@@ -296,6 +299,7 @@ save .config and exit
 #12) reboot select linux 4.20
 
 ```reboot```
+
 
 ### gslx680_ts_acpi
 
