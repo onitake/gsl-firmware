@@ -237,7 +237,7 @@ as the DMI overrides are outside the context of the driver. Install and reboot.
 You may also try reloading the kernel using `kexec`, but this can lead to an
 unstable system and is not recommended.
 
-### how to recompile kernel (example with v4.20.2)
+### how to recompile kernel (example with v4.20.2) on ubuntu/debian based distros
 #0) get requiered tools
 
 ```sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev```
