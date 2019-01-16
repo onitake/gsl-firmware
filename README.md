@@ -239,36 +239,49 @@ unstable system and is not recommended.
 
 ### how to recompile kernel (example with v4.20.2)
 #0) get requiered tools
-sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
+```sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev```
+
 #1) get latest (4.20.2 at the moment of creation of this tut) linux kernel from kernel.org
-wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.20.2.tar.xz -P ./Downloads
+```wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.20.2.tar.xz -P ./Downloads```
+
 #2) extract the archive's content
-tar -xf Downloads/linux-4.20.2.tar.xz
+```tar -xf Downloads/linux-4.20.2.tar.xz```
+
 #3) 
-cd linux-4.20.2
+```cd linux-4.20.2```
+
 #4)
-sudo make clean
+```sudo make clean```
+
 #5)
-sudo make menuconfig
+```sudo make menuconfig```
+
 #6) enable
 Device Drivers  --->X86 Platform Specific Device Drivers  --->DMI based touchscreen configuration info
+
 #7)
 save .config and exit
+
 #8) compilation will take a long time - 3 hours+ on the tablet, using only two threads because otherwise it overheats
-sudo make -j2 deb-pkg
+```sudo make -j2 deb-pkg```
+
 #9)
-cd ..
+```cd ..```
+
 #10)
-sudo dpkg -i linux-libc-dev_4.20.2-1_amd64.deb 
-sudo dpkg -i linux-headers-4.20.2_4.20.2-1_amd64.deb 
-sudo dpkg -i linux-image-4.20.2_4.20.2-1_amd64.deb
-sudo dpkg -i linux-image-4.20.2-dbg_4.20.2-1_amd64.deb
+```sudo dpkg -i linux-libc-dev_4.20.2-1_amd64.deb ```
+```sudo dpkg -i linux-headers-4.20.2_4.20.2-1_amd64.deb ```
+```sudo dpkg -i linux-image-4.20.2_4.20.2-1_amd64.deb```
+```sudo dpkg -i linux-image-4.20.2-dbg_4.20.2-1_amd64.deb```
+
 #11)
-sudo update-grub
-#12 copy driver to
-cp ./tablet-name-driver.fw /lib/firmware/silead/tablet-name-driver.fw
+```sudo update-grub```
+
+#12 copy driver for your device from this repository to
+```cp ./tablet-name-driver.fw /lib/firmware/silead/tablet-name-driver.fw```
+
 #12) reboot select linux 4.20
-reboot
+```reboot```
 
 ### gslx680_ts_acpi
 
