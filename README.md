@@ -26,6 +26,7 @@ for copyright information.
 | Manufacturer  | Device                          | Tested  | Firmware                                                       |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|
 | Chuwi         | hi8                             | yes     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
+| Chuwi         | Hi8 Air                         | yes     | [firmware/chuwi/hi8_air](firmware/chuwi/hi8_air)               |
 | Chuwi         | vi8                             | no      | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       |
 | Chuwi         | vi10                            | yes     | [firmware/chuwi/vi10](firmware/chuwi/vi10)                     |
 | Chuwi         | Hi10 Air                        | yes     | [firmware/chuwi/hi10_air](firmware/chuwi/hi10_air)             |
