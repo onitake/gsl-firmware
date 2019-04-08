@@ -172,6 +172,8 @@ whenever parameters are changed, testing is easier with gslx680_ts_acpi.
 There, parameters can be changed in the firmware, then updated by unloading and
 reloading the kernel module.
 
+You can take a look at this dpkg specific tutorial on how to configure and compile the current kernel with the modifications for silead_ts [here](kernel-recompile-debian.md).
+
 After the device parameters are known, you should add support to silead_ts
 and submit a kernel patch to the
 [linux-input mailing list](http://vger.kernel.org/vger-lists.html#linux-input).
