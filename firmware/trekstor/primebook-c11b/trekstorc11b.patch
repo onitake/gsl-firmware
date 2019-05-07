@@ -1,0 +1,42 @@
+diff --git a/drivers/platform/x86/touchscreen_dmi.c b/drivers/platform/x86/touchscreen_dmi.c
+index 8c5d47c0a..9520e92b2 100644
+--- a/drivers/platform/x86/touchscreen_dmi.c
++++ b/drivers/platform/x86/touchscreen_dmi.c
+@@ -415,6 +415,22 @@ static const struct ts_dmi_data trekstor_primebook_c11_data = {
+ 	.properties	= trekstor_primebook_c11_props,
+ };
+
++static const struct property_entry trekstor_primebook_c11b_props[] = {
++	PROPERTY_ENTRY_U32("touchscreen-size-x", 1980),
++	PROPERTY_ENTRY_U32("touchscreen-size-y", 1480),
++	PROPERTY_ENTRY_BOOL("touchscreen-inverted-y"),
++	PROPERTY_ENTRY_STRING("firmware-name",
++			      "gsl1680-trekstor-primebook-c11b.fw"),
++	PROPERTY_ENTRY_U32("silead,max-fingers", 10),
++	PROPERTY_ENTRY_BOOL("silead,home-button"),
++	{ }
++};
++
++static const struct ts_dmi_data trekstor_primebook_c11b_data = {
++	.acpi_name	= "MSSL1680:00",
++	.properties	= trekstor_primebook_c11b_props,
++};
++
+ static const struct property_entry trekstor_primebook_c13_props[] = {
+ 	PROPERTY_ENTRY_U32("touchscreen-size-x", 2624),
+ 	PROPERTY_ENTRY_U32("touchscreen-size-y", 1920),
+@@ -731,6 +747,14 @@ static const struct dmi_system_id touchscreen_dmi_table[] = {
+ 			DMI_MATCH(DMI_PRODUCT_NAME, "Primebook C11"),
+ 		},
+ 	},
++	{
++		/* Trekstor Primebook C11B */
++		.driver_data = (void *)&trekstor_primebook_c11b_data,
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "TREKSTOR"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "Primebook C11B"),
++		},
++	},
+ 	{
+ 		/* Trekstor Primebook C13 */
+ 		.driver_data = (void *)&trekstor_primebook_c13_data,
