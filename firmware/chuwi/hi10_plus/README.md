@@ -7,7 +7,7 @@ Chuwi/Hi10 Plus
 | Device                    | Hi10 Plus  |
 | Website                   | http://en.chuwi.com/product/items/Chuwi-Hi10-Plus.html |
 | Vendor driver (Windows)   | http://forum.chuwi.com/thread-2657-1-1.html |
-| Extracted firmware        |  -- |
+| Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | 1920x1280 |
 | Touch panel resolution    | 1925x1260 |

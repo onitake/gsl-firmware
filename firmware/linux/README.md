@@ -29,6 +29,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-chuwi-hi8.fw                   | Chuwi Hi8 tablets |
 | gsl1680-chuwi-hi10-air.fw              | Chuwi Hi10 Air tablets |
 | gsl1680-chuwi-hi10-pro.fw              | Chuwi Hi10 Pro tablets |
+| gsl1680-chuwi-hi10-plus.fw              | Chuwi Hi10 Plus tablets |
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1680-pipo-w2s.fw                    | Pipo W2S tablets |
 | gsl1686-surftab-wintron70-st70416-6.fw | Trekstor Surftab Wintron 7.0 ST70416-6 tablets |
