@@ -54,6 +54,7 @@ for copyright information.
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
 | Cube          | KNote (i1101)                   | yes     | [firmware/cube/i1101](firmware/cube/i1101)                     |
+| Cube          | KNote Go(i1101S)                | yes     | [firmware/cube/i1101S](firmware/cube/i1101S)                   |
 | jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
 | jumper        | EZpad 5SE                       | no      | [firmware/jumper/EZpad_5SE](firmware/jumper/EZpad_5SE)         |
 | jumper        | EZpad 6                         | yes     | [firmware/jumper/EZpad_6](firmware/jumper/EZpad_6)             |
