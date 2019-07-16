@@ -13,7 +13,7 @@ insignia/flex8
 | Touch panel resolution    | 1140x1720                                                        |
 | Touch controller          | GSL1680                                                          |
 | Multitouch support        | Yes (10)                                                         |
-| Finger tracking           | No                                                               |
+| Finger tracking           | Yes                                                              |
 | Mirrored horizontally     | Yes                                                              |
 | Mirrored vertically       | No                                                               |
 | Axes swapped              | Yes                                                              |
