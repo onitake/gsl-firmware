@@ -64,6 +64,7 @@ for copyright information.
 | Teclast       | X3 Plus                         | yes     | [firmware/teclast/x3_plus](firmware/teclast/x3_plus)           |
 | Teclast       | X5 Pro                          | yes     | [firmware/teclast/x5_pro](firmware/teclast/x5_pro)             |
 | Proworx       | MX049                           | yes     | [firmware/proworx/mx049](firmware/proworx/mx049)               |
+| Insignia      | Flex 8                          | yes     | [firmware/insignia/flex8](firmware/insignia/flex8)             |
 | Insignia      | Flex 11                         | yes     | [firmware/insignia/flex11](firmware/insignia/flex11)           |
 | iLife			| ZedBook 2			  			  | yes	    | [firmware/ilife/zedbook2](firmware/ilife/zedbook2)           |
 | Myria			| MY8307			  			  | yes	    | [firmware/myria/my8307](firmware/myria/my8307)           |
