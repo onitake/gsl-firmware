@@ -52,6 +52,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3676-onda-v80-plus-v3.fw            | Ondo V80 Plus v3 tablets |
 | gsl3680-chuwi-hi8-pro.fw               | Chuwi Hi8 Pro (CWI513) tablets |
 | gsl3680-chuwi-vi10.fw                  | Chuwi Vi10 (CWI505) tablets |
+| gsl3680-irbis_tw90.fw                  | Irbis TW90 tablets |
 | gsl3680-onda-v891w-v1.fw               | Onda V891w (v1) tablets |
 | gsl3680-pov-mobii-wintab-p800w-v20.fw  | Point of View mobii Wintab P800w (v2.0) tablets |
 | gsl3692-jumper-ezpad-6-pro.fw          | Jumper EZpad 6(S) Pro tablets |
