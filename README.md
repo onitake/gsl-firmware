@@ -71,7 +71,6 @@ for copyright information.
 | Schneider	     | SCT101CTM                      | yes     | [firmware/schneider/sct101ctm](firmware/schneider/sct101ctm)    |
 
 
-
 ## Adding new firmware
 
 To request new firmware to be added to the list, please send a
