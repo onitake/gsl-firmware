@@ -5,7 +5,7 @@ Schneider/SCT101CTM
 | Manufacturer              | Schneider   |
 | Device                    | SCT101CTM   |
 | Website                   | https://www.schneiderconsumer.com/en/product/2-in-1-full-hd-tablet/ |
-| Vendor driver (Windows)   | Found in C:/Windows/System32/Drivers |
+| Vendor driver (Windows)   | [SileadTouch.sys](SileadTouch.sys) |
 | Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | 1920x1200   |
