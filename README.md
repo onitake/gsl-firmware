@@ -68,6 +68,7 @@ for copyright information.
 | Insignia      | Flex 11                         | yes     | [firmware/insignia/flex11](firmware/insignia/flex11)           |
 | iLife			| ZedBook 2			  			  | yes	    | [firmware/ilife/zedbook2](firmware/ilife/zedbook2)           |
 | Myria			| MY8307			  			  | yes	    | [firmware/myria/my8307](firmware/myria/my8307)           |
+| Schneider	     | SCT101CTM                      | yes     | [firmware/schneider/sct101ctm](firmware/schneider/sct101ctm)    |
 
 
 ## Adding new firmware
