@@ -47,6 +47,7 @@ for copyright information.
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
 | Onda          | V820w 16G                       | yes     | [firmware/onda/v820w_16g](firmware/onda/v820w_16g)             |
 | Onda          | V820w 32G                       | yes     | [firmware/onda/v820w_32g](firmware/onda/v820w_32g)             |
+| Onda          | V891 v5                         | yes     | [firmware/onda/v891_v5](firmware/onda/v891_v5)                 |
 | Onda          | V891w                           | no      | [firmware/onda/v891w](firmware/onda/v891w)                     |
 | Onda          | oBook 20 Plus                   | yes     | [firmware/onda/obook_20_plus](firmware/onda/obook_20_plus)     |
 | EduGear       | XR2N1                           | yes     | [firmware/edugear/xr2n1](firmware/edugear/xr2n1)               |
