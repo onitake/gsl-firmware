@@ -35,6 +35,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-pipo-w2s.fw                    | Pipo W2S tablets |
 | gsl1680-pipo-w11.fw                    | Pipo W11 tablets |
 | gsl1680-teclast-x3-plus.fw             | Teclast X3 Plus tablets |
+| gsl1680-trekstor-primebook-c11.fw      | Trekstor Primebook C11[B] (convertible) |
 | gsl1680-trekstor-primebook-c13.fw      | Trekstor Primebook C13 (convertible) |
 | gsl1680-trekstor-primetab-t13b.fw      | Trekstor Primetab T13B tablets |
 | gsl1686-dexp-ursus-7w.fw               | Dexp Ursus 7W tablets |
