@@ -17,4 +17,4 @@ vinga/twizzle_j116
 | Mirrored horizontally     | No |
 | Mirrored vertically       | No |
 | Axes swapped              | No |
-| Comments                  | Ukrainian notebook assembled in China. `firmware.fw` extracted from the header file, `silead_ts.fw` generated from the firmware file. using README instructions. Use xinput_calibrate to calibrate the device as initial calibration is a bit off vertically. |
+| Comments                  | Ukrainian notebook assembled in China. `firmware.fw` extracted from the header file, `silead_ts.fw` generated from the firmware file using `README` instructions. Use xinput_calibrate to calibrate the device as initial calibration is a bit off vertically. |
