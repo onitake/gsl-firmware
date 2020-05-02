@@ -72,6 +72,7 @@ for copyright information.
 | Myria			| MY8307			  			  | yes	    | [firmware/myria/my8307](firmware/myria/my8307)                 |
 | Schneider	    | SCT101CTM                       | yes     | [firmware/schneider/sct101ctm](firmware/schneider/sct101ctm)   |
 | techBite      | Arc 11.6                        | yes     | [firmware/techbite/arc_11_6](firmware/techbite/arc_11_6)       |
+| Vinga         | Twizzle J116                    | yes     | [firmware/vinga/twizzle_j116](firmware/vinga/twizzle_j116)
 
 
 ## Adding new firmware
