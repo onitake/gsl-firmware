@@ -10,11 +10,11 @@ vinga/twizzle_j116
 | Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | 1920x1080 |
-| Touch panel resolution    | 1920x1080 |
+| Touch panel resolution    | 1920x1280 (slightly taller) |
 | Touch controller          | GSL1680 |
 | Multitouch support        | Yes (10) |
 | Finger tracking           | Unknown |
 | Mirrored horizontally     | No |
 | Mirrored vertically       | No |
 | Axes swapped              | No |
-| Comments                  | Ukrainian notebook assembled in China. `firmware.fw` extracted from the header file, `silead_ts.fw` generated from the firmware file using `README` instructions. Use xinput_calibrate to calibrate the device as initial calibration is a bit off vertically. |
+| Comments                  | Ukrainian notebook assembled in China. `firmware.fw` extracted from the header file, `silead_ts.fw` generated from the firmware file using `README` instructions. Use xinput_calibrate to calibrate the device as initial calibration may be a bit off due to assembly. |
