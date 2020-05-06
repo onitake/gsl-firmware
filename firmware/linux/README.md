@@ -38,6 +38,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-trekstor-primebook-c11.fw      | Trekstor Primebook C11[B] (convertible) |
 | gsl1680-trekstor-primebook-c13.fw      | Trekstor Primebook C13 (convertible) |
 | gsl1680-trekstor-primetab-t13b.fw      | Trekstor Primetab T13B tablets |
+| gsl1680-vinga-twizzle_j116.fw          | Vinga Twizzle J116 |
 | gsl1686-dexp-ursus-7w.fw               | Dexp Ursus 7W tablets |
 | gsl1686-dexp-ursus-7w-rev2.fw          | Dexp Ursus 7W (rev2) tablets |
 | gsl1686-digma_citi_e200.fw             | Digma Citi E200 tablets |
