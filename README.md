@@ -45,6 +45,7 @@ for copyright information.
 | Trekstor      | Primetab T13B                   | no      | [firmware/trekstor/primetab-t13b/](firmware/trekstor/primetab-t13b/)|
 | Utok          | i800                            | yes     | [firmware/utok/i800](firmware/utok/i800)                       |
 | RCA           | Cambio W101 V2 10.1" tablet     | yes     | [firmware/rca/w101v2](firmware/rca/w101v2)                     |
+| Odys          | Fusion Win 12 - 2in1            | yes     | [firmware/odys/fusionwin12](firmware/odys/fusionwin12)         |
 | Onda          | V820w 16G                       | yes     | [firmware/onda/v820w_16g](firmware/onda/v820w_16g)             |
 | Onda          | V820w 32G                       | yes     | [firmware/onda/v820w_32g](firmware/onda/v820w_32g)             |
 | Onda          | V891 v5                         | yes     | [firmware/onda/v891_v5](firmware/onda/v891_v5)                 |
