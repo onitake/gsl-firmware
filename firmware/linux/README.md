@@ -31,6 +31,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-chuwi-hi10-pro.fw              | Chuwi Hi10 Pro tablets |
 | gsl1680-chuwi-hi10-plus.fw             | Chuwi Hi10 Plus tablets |
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
+| gsl1680-irbis-tw118.fw                 | Irbis TW118 tablets |
 | gsl1680-mpman-converter9.fw            | MPMan Converter9 tablets |
 | gsl1680-onda-v820w-32g.fw              | Onda V820w Dual OS tablets |
 | gsl1680-pipo-w2s.fw                    | Pipo W2S tablets |
