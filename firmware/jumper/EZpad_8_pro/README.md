@@ -10,7 +10,7 @@ EZpad_8_pro
 | Extracted firmware        | [firmware.fw](firmware.fw) |
 | Firmware for gslx680-acpi | [silead_ts.fw](silead_ts.fw) |
 | Display resolution        | 1920x1080 |
-| Touch panel resolution    | 1720x1130 |
+| Touch panel resolution    | 1720x1130 （evtest gain）|
 | Touch controller          | WSSL1680 |
 | Multitouch support        | 10 |
 | Finger tracking           | Yes |
@@ -18,3 +18,26 @@ EZpad_8_pro
 | Mirrored vertically       | No |
 | Axes swapped              | No |
 | Comments                  | ./gsl-firmware/tools/fwtool -c firmware.fw -m 1680 -w 1720 -h 1130 -t 10 silead_ts.fw |
+
+
+（Deepin OS）linux 5.10.5 食用方法：其他版本也类似
+
+推荐食用apic公版驱动，所以首先需要安装驱动并禁用linux自带的silead驱动。终端里按如下操作。
+
+git clone https://github.com/onitake/gslx680-acpi.git
+
+cd gslx680-acpi
+
+make
+
+sudo make install
+
+depmod -a
+
+sudo cp silead_ts.fw /lib/firmware 
+
+sudo rmmod silead 
+
+sudo modprobe gslx680_ts_acpi
+
+重启电脑就可以用了。
