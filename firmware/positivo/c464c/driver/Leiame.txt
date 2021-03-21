@@ -1,0 +1,5 @@
+POSITIVO TECNOLOGIA S/A - Instalar Drivers
+
+Para Extrair o arquivo sempre utilize a opção "Extrair para uma Pasta" organizando da melhor maneira as pastas com os drivers
+
+Para instalar o driver execute o arquivo Start.cmd e siga as instruções na tela.
