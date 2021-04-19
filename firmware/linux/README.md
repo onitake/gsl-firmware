@@ -70,3 +70,4 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3692-jumper-ezpad-6-pro-b.fw        | Jumper EZpad 6 Pro (B) tablets |
 | gsl3692-pov-mobii-wintab-p800w.fw      | Point of View mobii Wintab P800w (v2.1) tablets |
 | gsl3692-pov-mobii-wintab-p1006w-v10.fw | Point of View mobii Wintab P1006w (v1.0) tablets |
+| gsl3692-teclast-tbook11.fw             | Teclast Tbook 11 tablets |
