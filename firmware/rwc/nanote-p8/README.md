@@ -1,4 +1,4 @@
-<RWC>/<Nanote P8>
+RWC/Nanote P8
 ---------------------------------------------
 
 | Item                      | Description |
