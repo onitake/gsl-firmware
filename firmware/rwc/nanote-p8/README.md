@@ -1,4 +1,4 @@
-<manufacturer_short_name>/<device_short_name>
+<RWC>/<Nanote P8>
 ---------------------------------------------
 
 | Item                      | Description |
