@@ -30,6 +30,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-chuwi-hi10-air.fw              | Chuwi Hi10 Air tablets |
 | gsl1680-chuwi-hi10-pro.fw              | Chuwi Hi10 Pro tablets |
 | gsl1680-chuwi-hi10-plus.fw             | Chuwi Hi10 Plus tablets |
+| gsl1680-chuwi-surbook-mini.fw          | Chuwi Surbook Mini tablets |
 | gsl1680-connect-tablet9.fw             | Connect Tablet9 tablets |
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1680-irbis-tw118.fw                 | Irbis TW118 tablets |
