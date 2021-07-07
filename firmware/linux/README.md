@@ -35,6 +35,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1680-irbis-tw118.fw                 | Irbis TW118 tablets |
 | gsl1680-mpman-converter9.fw            | MPMan Converter9 tablets |
+| gsl1680-myria-my8307.fw                | Myria MY8307 tablets |
 | gsl1680-onda-v820w-32g.fw              | Onda V820w Dual OS tablets |
 | gsl1680-pipo-w2s.fw                    | Pipo W2S tablets |
 | gsl1680-pipo-w11.fw                    | Pipo W11 tablets |
