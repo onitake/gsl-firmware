@@ -16,8 +16,6 @@ Chuwi/HiBook Pro
 | Mirrored horizontally     | Unknown (Maybe no, should be similar with Chuwi Hi10 Pro) |
 | Mirrored vertically       | Unknown (Maybe no, should be similar with Chuwi Hi10 Pro) |
 | Axes swapped              | Unknown (Maybe no, should be similar with Chuwi Hi10 Pro) |
-| Comments                  | fwtool -c ./firmware.fw -m 1680 -w 1925 -h 1260 -t 10 -f track silead_ts.fw |
+| Comments                  | It's similar with Chuwi Hi10 Pro (z8350 variant), but display resolution is bigger, with no pen support, I think. |
 --------------------------------------
-It's similar with Chuwi Hi10 Pro (z8350 variant), but the resolution is bigger, with no pen support, I think.
-
 Needs testing, but I don't know how much the resolution of the touch panel should be.
