@@ -77,6 +77,7 @@ for copyright information.
 | Vinga         | Twizzle J116                    | yes     | [firmware/vinga/twizzle_j116](firmware/vinga/twizzle_j116)     |
 | Multilaser    | M11W                            | yes     | [firmware/multilaser/m11w](firmware/multilaser/m11w)           |
 | RWC           | NANOTE P8                       | yes     | [firmware/rwc/nanote-p8](firmware/rwc/nanote-p8)               |
+| viglen           | connect10"                       | yes     | [firmware/vliglen/connect10](firmware/viglen/connect10)               |
 
 
 ## Adding new firmware
