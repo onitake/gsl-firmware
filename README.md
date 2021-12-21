@@ -78,6 +78,7 @@ for copyright information.
 | Multilaser    | M11W                            | yes     | [firmware/multilaser/m11w](firmware/multilaser/m11w)           |
 | RWC           | NANOTE P8                       | yes     | [firmware/rwc/nanote-p8](firmware/rwc/nanote-p8)               |
 | viglen           | connect10"                       | yes     | [firmware/vliglen/connect10](firmware/viglen/connect10)               |
+| Saphir        | WinPad 10.1 FHD                 | no      | [ firmware/saphir/winpad_10_1]( firmware/saphir/winpad_10_1)   |
 
 
 ## Adding new firmware
