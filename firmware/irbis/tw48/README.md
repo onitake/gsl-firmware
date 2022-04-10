@@ -16,4 +16,4 @@ irbis/tw48
 | Mirrored horizontally     | Yes |
 | Mirrored vertically       | No |
 | Axes swapped              | Yes |
-| Comments                  | ./fwtool -c firmware_00.fw -m 1680  -w 1515 -h 1975 -f swap,xflip -t 10 silead_ts.fw |
+| Comments                  | ./fwtool -c SileadTouch.fw -m 1680  -w 1515 -h 1975 -f swap,xflip -t 10 silead_ts.fw |
