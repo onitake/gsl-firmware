@@ -6,8 +6,8 @@ irbis/tw48
 | Manufacturer              | IRBIS |
 | Device                    | TW48 |
 | Website                   | https://www.irbis.su/category/portable/notebooks/product/147 |
-| Vendor driver (Windows)   | SileadTouch.fw |
-| Extracted firmware        | silead_ts.fw |
+| Vendor driver (Windows)   | [SileadTouch.fw ](SileadTouch.fw ) |
+| Extracted firmware        | [silead_ts.fw] (silead_ts.fw) |
 | Display resolution        | 1280x800 |
 | Touch panel resolution    | 1515x1975 |
 | Touch controller          | GSL1686 |
