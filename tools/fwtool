@@ -32,6 +32,15 @@ sub usage() {
 	-1;
 }
 
+print STDERR "-- fwtool --\n";
+print STDERR "Firmware conversion and manipulation tool for Silead touchscreen controllers\n";
+print STDERR "Copyright (c) 2016-2017 Gregor Riepl <onitake\@gmail.com>\n";
+print STDERR "\n";
+print STDERR "WARNING --- This tool is not endorsed or supported by Silead Inc.\n";
+print STDERR "Use at your own risk.\n";
+print STDERR "Not suitable for use with any other drivers except gslx680-acpi.\n";
+print STDERR "\n";
+
 my ($mode, $format, $tscfg, $model, $width, $height, $touches, $flags, $plain) = ('info', 'plain');
 GetOptions(
 	'info' => sub { $mode = 'info'; },
