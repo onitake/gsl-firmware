@@ -16,4 +16,4 @@ fusion5/fwin232plus
 | Mirrored horizontally     | No |
 | Mirrored vertically       | No |
 | Axes swapped              | Yes |
-| Comments                  | ./fwtool -c drivers/WS_HK_C105A_3676_L_x64_1864wq.h -2 -m 1680 -w 1150 -h 1730 -t 10 -f swap silead_ts.fw |
+| Comments                  | ./fwtool -c drivers/WS_HK_C105A_3676_L_x64_1864wq.h -2 -m 1680 -w 1150 -h 1730 -t 2 -f swap,track silead_ts.fw |
