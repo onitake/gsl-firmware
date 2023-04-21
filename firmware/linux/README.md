@@ -33,6 +33,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-chuwi-surbook-mini.fw          | Chuwi Surbook Mini tablets |
 | gsl1680-connect-tablet9.fw             | Connect Tablet9 tablets |
 | gsl1680-csl-panther-tab-hd.fw          | CSL Panther Tab HD |
+| gsl1680-dexp-ursus-kx210i.fw           | DEXP Ursus KX210i tablet |
 | gsl1680-gp-electronic-t701.fw          | GP-electronic T701 tablets |
 | gsl1680-irbis-tw118.fw                 | Irbis TW118 tablets |
 | gsl1680-mpman-converter9.fw            | MPMan Converter9 tablets |
