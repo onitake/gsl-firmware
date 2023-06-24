@@ -5,7 +5,7 @@ BUSH/AC101BCS
 | Manufacturer              | Bush                                                                     |
 | Device                    | AC101BCS                                                                     |
 | Extracted firmware        | firmware_00.fw firmware_01.fw firmware_02.fw firmware_03.fw                                                                     |
-| Firmware for gslx680-acpi | silead_ts.fw                                                              |
+| Firmware for gslx680-acpi | silead_ts_00.fw silead_ts_01.fw silead_ts_02.fw silead_ts_03.fw                                                              |
 | Display resolution        | 1280X800                                                                 |
 | Touch panel resolution    | 1280X800                                               |
 | Touch controller          | GSL1680                                                                   |
