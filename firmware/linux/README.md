@@ -19,6 +19,7 @@ simply copy the silead directory to /lib/firmware/silead:
 |----------------------------------------|--------------|
 | gsl1680-a082-q8-700.fw                 | Allwinner SoC Q8 tablets (https://linux-sunxi.org/Format_Q8) with a gsl1680 with chip-id a082, variant 0 |
 | gsl1680-a082-q8-a70.fw                 | Allwinner SoC Q8 tablets (https://linux-sunxi.org/Format_Q8) with a gsl1680 with chip-id a082, variant 1 |
+| gsl1680-archos-101-cesium-educ.fw      | Archos 101 Cesium Educ tablets |
 | gsl1680-b482-q8-d702.fw                | Allwinner SoC Q8 tablets (https://linux-sunxi.org/Format_Q8) with a gsl1680 with chip-id b482, variant 0 |
 | gsl1680-b482-q8-a70.fw                 | Allwinner SoC Q8 tablets (https://linux-sunxi.org/Format_Q8) with a gsl1680 with chip-id b482, variant 1 |
 | gsl1680-inet86dz.fw                    | Allwinner A23 7" tablets with inet86dz mainboard |

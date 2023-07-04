@@ -25,6 +25,7 @@ for copyright information.
 
 | Manufacturer  | Device                          | Tested  | Firmware                                                       |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|
+| Archos        | 101 Cesium Educ                 | yes     | [firmware/archos/101_cesium_educ](firmware/archos/101_cesium_educ)|
 | BUSH          | Bush Windows tablet             | yes     | [firmware/bush/bush_windows_tablet](firmware/bush/bush_windows_tablet)|
 | Chuwi         | hi8                             | yes     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
 | Chuwi         | Hi8 Air                         | yes     | [firmware/chuwi/hi8_air](firmware/chuwi/hi8_air)               |
