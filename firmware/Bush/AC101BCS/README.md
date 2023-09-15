@@ -4,7 +4,7 @@ BUSH/AC101BCS
 |---------------------------|---------------------------------------------------------------------------|
 | Manufacturer              | Bush                                                                      |
 | Device                    | AC101BCS                                                                  |
-| Extracted firmware        | firmware_03.fw                                                            |
+| Extracted firmware        | silead.fw                                                            |
 | Firmware for gslx680-acpi | silead_ts.fw                                                              |
 | Display resolution        | 1850X1280                                                                  |
 | Touch panel resolution    | Unknow                                                                    |
@@ -14,5 +14,5 @@ BUSH/AC101BCS
 | Mirrored horizontally     | No                                                                       |
 | Mirrored vertically       | Yes                                                                        |
 | Axes swapped              | Yes                                                                       |
-| Comments                  | tools/fwtool -c ../firmware_03.fw -m 1680 -w 1850 -h 1280 -t 10 -f xflip,noyflip,swap,track silead_ts.fw           |
+| Comments                  | tools/fwtool -c silead.fw -m 1680 -w 1850 -h 1280 -t 10 -f noxflip,yflip,swap silead_ts.fw           |
 --------------------------------------
