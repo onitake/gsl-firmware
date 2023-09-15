@@ -1,9 +1,9 @@
-bush/ac101bcs
+bush/Bush_Windows_tablet
 --------------------------------------
 | Item                      | Description                                                               |
 |---------------------------|---------------------------------------------------------------------------|
-| Manufacturer              | bush                                                                      |
-| Device                    | ac101bcs                                                                  |
+| Manufacturer              | BUSH                                                                      |
+| Device                    | Bush_Windows_tablet                                                                 |
 | Extracted firmware        | silead.fw                                                            |
 | Firmware for gslx680-acpi | silead_ts.fw                                                              |
 | Display resolution        | 1850X1280                                                                  |
