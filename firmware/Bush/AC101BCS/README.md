@@ -1,9 +1,9 @@
-BUSH/AC101BCS
+bush/ac101bcs
 --------------------------------------
 | Item                      | Description                                                               |
 |---------------------------|---------------------------------------------------------------------------|
-| Manufacturer              | Bush                                                                      |
-| Device                    | AC101BCS                                                                  |
+| Manufacturer              | bush                                                                      |
+| Device                    | zC101bcs                                                                  |
 | Extracted firmware        | silead.fw                                                            |
 | Firmware for gslx680-acpi | silead_ts.fw                                                              |
 | Display resolution        | 1850X1280                                                                  |
