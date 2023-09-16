@@ -25,6 +25,7 @@ for copyright information.
 
 | Manufacturer  | Device                          | Tested  | Firmware                                                       |
 |---------------|---------------------------------|---------|----------------------------------------------------------------|
+| BUSH          | Bush Windows tablet             | no      | [firmware/bush/bush_windows_tablet](firmware/bush/bush_windows_tablet)|
 | Chuwi         | hi8                             | yes     | [firmware/chuwi/hi8](firmware/chuwi/hi8)                       |
 | Chuwi         | Hi8 Air                         | yes     | [firmware/chuwi/hi8_air](firmware/chuwi/hi8_air)               |
 | Chuwi         | vi8                             | no      | [firmware/chuwi/vi8](firmware/chuwi/vi8)                       |
