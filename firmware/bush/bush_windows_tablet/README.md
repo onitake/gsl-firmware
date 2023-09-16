@@ -3,7 +3,7 @@ bush/bush_windows_tablet
 | Item                      | Description                                                               |
 |---------------------------|---------------------------------------------------------------------------|
 | Manufacturer              | BUSH                                                                      |
-| Device                    | Bush_Windows_tablet                                                                 |
+| Device                    | Bush Windows tablet                                                                 |
 | Extracted firmware        | silead.fw                                                            |
 | Firmware for gslx680-acpi | silead_ts.fw                                                              |
 | Display resolution        | 1850X1280                                                                  |
