@@ -12,7 +12,7 @@ bush/bush_windows_tablet
 | Multitouch support        | Yes (10 points)                                                           |
 | Finger tracking           | No                                                                        |
 | Mirrored horizontally     | No                                                                       |
-| Mirrored vertically       | Yes                                                                        |
-| Axes swapped              | Yes                                                                       |
-| Comments                  | tools/fwtool -c silead.fw -m 1680 -w 1850 -h 1280 -t 10 -f noxflip,yflip,swap silead_ts.fw           |
+| Mirrored vertically       | No                                                                        |
+| Axes swapped              | No                                                                       |
+| Comments                  | tools/fwtool -c silead.fw -m 1680 -w 1850 -h 1280 -t 10 -f noxflip,noyflip,noswap silead_ts.fw           |
 --------------------------------------
