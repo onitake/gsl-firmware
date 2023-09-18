@@ -14,5 +14,5 @@ bush/bush_windows_tablet
 | Mirrored horizontally     | No                                                                       |
 | Mirrored vertically       | No                                                                        |
 | Axes swapped              | No                                                                       |
-| Comments                  | tools/fwtool -c silead.fw -m 1680 -w 1850 -h 1280 -t 10 -f noxflip,noyflip,noswap silead_ts.fw           |
+| Comments                  | tools/fwtool -c silead.fw -m 1680 -w 1850 -h 1280 -t 10 silead_ts.fw           |
 --------------------------------------
