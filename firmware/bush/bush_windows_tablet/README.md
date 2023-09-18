@@ -10,7 +10,7 @@ bush/bush_windows_tablet
 | Touch panel resolution    | Unknow                                                                    |
 | Touch controller          | GSL1680                                                                   |
 | Multitouch support        | Yes (10 points)                                                           |
-| Finger tracking           | No                                                                        |
+| Finger tracking           | Unknow                                                                        |
 | Mirrored horizontally     | No                                                                       |
 | Mirrored vertically       | No                                                                        |
 | Axes swapped              | No                                                                       |
