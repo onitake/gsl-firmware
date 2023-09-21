@@ -267,7 +267,7 @@ unstable system and is not recommended.
 The [gslx680-acpi](https://github.com/onitake/gslx680-acpi) driver
 requires firmware in a special compact format.
 
-Use [firmware/fwtool](firmware/fwtool) to convert regular firmware
+Use [tools/fwtool](tools/fwtool) to convert regular firmware
 into this format. The tool will also store device parameters (such as
 such as panel width and height, tracking support, etc.) inside the firmware.
 
