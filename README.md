@@ -258,12 +258,24 @@ The exact values and suitable matching tags depend on the particular device.
 You can find them with the help of `dmidecode`.
 Look for the section called "System Information".
 
-[See here for an example patch](https://patchwork.kernel.org/patch/10179961/).
+The linux touchscreen framework also supports some other properties that
+may be useful, see [touchscreen.yaml](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/input/touchscreen/touchscreen.yaml)
+for a full list.
+
+[See here for an example patch](https://patchwork.kernel.org/project/platform-driver-x86/patch/20180608214558.30717-3-hdegoede@redhat.com/).
 
 After adding the override tables, you have to recompile your kernel,
 as the DMI overrides are outside the context of the driver. Install and reboot.
 You may also try reloading the kernel using `kexec`, but this can lead to an
 unstable system and is not recommended.
+
+Once the parameters have been tested successfully, it's recommended that
+you submit the patch for Linux kernel inclusion.
+See the [Submitting patches](https://www.kernel.org/doc/html/latest/process/submitting-patches.html)
+documentation on how to do this. Please send it to the
+[linux-input](http://vger.kernel.org/vger-lists.html#linux-input) and
+[platform-driver-x86](http://vger.kernel.org/vger-lists.html#platform-driver-x86)
+mailing lists.
 
 
 ### gslx680_ts_acpi
