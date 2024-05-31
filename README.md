@@ -90,6 +90,7 @@ for copyright information.
 | Fusion5       | FWIN232PLUS                     | yes     | [firmware/fusion5/fwin232plus](firmware/fusion5/fwin232plus)   |
 | CSL           | Panther Tab HD                  | yes     | [firmware/csl/panther-tab-hd](firmware/csl/panther-tab-hd)     |
 | Positivo      | C4128B                          | yes     | [firmware/positivo/c4128b](firmware/positivo/c4128b)           |
+| Globalspace   | SoLT IVW 11.6"                  | yes     | [firmware/globalspace/solt-ivw-11.6](firmware/globalspace/solt-ivw-11.6) |
 
 
 ## Adding new firmware
