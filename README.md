@@ -106,14 +106,15 @@ pull request with the following structure:
   firmware. See [firmware/README.md.template](firmware/README.md.template)
   for an example with explanations.
 - `firmware/<manufacturer>/<device>/silead.fw`
-  (optional) The extracted firmware, as created by fw_extractor,
-  untscfg, unscramble or scanwindrv. (see below)
+  (optional) The extracted regular firmware, as created by fw_extractor,
+  untscfg, unscramble or scanwindrv (see below).
 - `firmware/linux/gsl1680-<manufacturer>-<device>.fw`
   (optional) The same file as silead.fw, for use with the silead.ko driver
-  that is part of the Linux kernel. (see below)
+  that is part of the Linux kernel (see below).
+  If you add this please also add an entry for this to `firmware/linux/README.md`.
 - `firmware/<manufacturer>/<device>/silead_ts.fw`
-  (optional) Firmware created by fwtool using correct parameters. (see below)
-  For use with the alternative gslx680_ts_acpi driver.
+  (optional) Firmware in gslx680_ts_acpi format created by fwtool using correct
+  parameters (see below).
 - `README.md`
   A patch to this readme file that adds an entry to the device list.
 
@@ -189,28 +190,157 @@ When Silead touchscreen support was added to ACPI (PC) platforms, the
 integrator did not anticipate any uses cases outside the device vendor's
 ecosystems. For this reason, it is required to pass additional
 device parameters to the driver that are neither contained in the firmware
-nor in the ACPI DSDT. silead_ts handles this in the kernel, using an
-ACPI override/quirk table, while gslx680_ts_acpi expects firmware in a
-different format that contains this information.
+nor in the ACPI DSDT. silead_ts handles this in the kernel, using a DMI
+quirk table. gslx680_ts_acpi expects firmware in its own format which contains
+this information.
 
-Since silead_ts requires a kernel modification (and thus a reboot or kexec)
-whenever parameters are changed, testing is easier with gslx680_ts_acpi.
-There, parameters can be changed in the firmware, then updated by unloading and
-reloading the kernel module.
-
-You can take a look at this dpkg specific tutorial on how to configure and compile the current kernel with the modifications for silead_ts [here](kernel-recompile-debian.md).
-
-After the device parameters are known, you should add support to silead_ts
-and submit a kernel patch to the
-[linux-input mailing list](http://vger.kernel.org/vger-lists.html#linux-input).
+silead_ts allows passing the device parameters on the kernel commandline
+to test on devices which are not yet in the DMI quirk table. This is supported
+in kernel 6.10 and later, for older kernels the kernel needs to be patched
+and rebuilt [(see e.g. kernel-recompile-debian.md)](kernel-recompile-debian.md)
+to test parameter changes. For older kernels testing is easier with
+gslx680_ts_acpi.
 
 
-### silead_ts
+### Determining the touchscreen's parameters
 
-First, decide on a unique name for the firmware. The recommended format is:
-`gsl<chip name>-<manufacturer>-<device>.fw`
-If you don't know the chip name, use gsl1680. Manufacturer and device name
-should be shortened to make the name readable, but still sufficiently unique.
+#### 1. Extract the firmware from the factory OS
+
+Before even installing Linux make sure you have extracted the firmware from
+the original factory OS as described above. Silead firmwares are model specific,
+so if the factory OS is wiped before retrieving the firmware then things will
+not work. In this case you may still be able to download a factory OS image from
+the device vendor's website, but not all vendors offer this.
+
+#### 2. Copying the firmware to /lib/firmare
+
+silead_ts, which should already be enabled in your Linux distribution's kernel,
+will print an error message about not being able to find the firmware in dmesg.
+To get this error message run `sudo dmesg | grep silead`.
+
+Copy the extracted firmware under `/lib/firmware/silead/` using the name
+given in the error message. Usually it should be copied to
+`/lib/firmware/silead/mssl1680.fw`. After copying run
+`sudo rmmod silead; sudo modprobe silead` and then rerun
+`sudo dmesg | grep silead` this should now show the touchscreen getting
+registered in the form of a line containing `input: silead_ts as ...`.
+
+#### 3. Testing you have the right firmware
+
+Install evtest or evemu-record (evemu), although all examples below use
+`evtest` using either the `evtest` or `evemu-record` command should work.
+
+Run `sudo evtest`. This gives a list of `/dev/input/event#` devices.
+Replace `#` in the commands below with the number of the `/dev/input/event#`
+node for the `silead_ts` input device.
+
+Run `sudo evtest /dev/input/event# | grep ABS_X` and then slowly run
+your finger over the screen from the left edge of the screen to
+the right edge along the middle line of the display and press Ctrl + C
+to terminate evtest when done. This should print slowly increasing or
+decreasing ABS_X values.
+
+If instead the ABS_X values stay approx. the same then your X and Y axis are
+swapped. Redo the test moving your finger over the screen from the top edge
+of the screen to the bottom edge along the middle line of the display instead.
+
+If there are big jumps or holes in the range, retry making sure your finger
+makes proper contact with the screen. If that doesn't help, then you have
+the wrong firmware.
+
+After verifying the X axis works well repeat the process for ABS_Y and
+verify that the Y axis works well too.
+
+#### 4. Determine the min and max values of the axis
+
+Run `sudo evtest /dev/input/event# | grep ABS_X` and for the same edges
+as used for ABS_X during step 3 first place your finger on the display
+near the edge and then *slowly* move it over the edge to the bezel,
+notice the lowest or highest value reported for ABS_X while doing this.
+Repeat this about 5 times to make sure you really have found
+the lowest / highest value the axis reports.
+
+Write down the lowest ABS_X value observed as x-min and the highest
+observed value (on the other edge) as x-max.
+
+Repeat this for ABS_Y and write down y-min and y-max.
+
+#### 5. Testing the parameters
+
+When running kernel 6.10 or later you can now test the found min/max
+values on the kernel commandline.
+
+This requires the ACPI Hardware ID (HID) for the touchscreen. Run
+`ls -d /sys/bus/i2c/devices/i2c-MSSL*`, this should output a single line
+ending in e.g. `i2c-MSSL1680:00`. The ACPI HID of the touchscreen is the bit
+after the `i2c-` and before the `:00` so `MSSL1680` in this case.
+
+This HID is the first argument for the `i2c_touchscreen_props` kernel
+commandline argument. To pass the found min/max values the following syntax
+is used:
+
+```
+i2c_touchscreen_props=<ACPI_HW_ID>:touchscreen-min-x=<x-min>:touchscreen-min-y=<y-min>:touchscreen-size-x=<x-max + 1>:touchscreen-size-y=<y-max + 1>
+```
+
+So if for example in step 4. you have found values of x-min=8, y-min=8,
+x-max=1919, y-max=1079 then the kernel commandline argument to pass would be:
+
+```
+i2c_touchscreen_props=MSSL1680:touchscreen-min-x=8:touchscreen-min-y=8:touchscreen-size-x=1920:touchscreen-size-y=1080
+```
+
+Edit your kernel configuration, e.g. `/boot/loader/entries/<current-kernel>.conf`,
+add this to your kernel commandline then reboot to test. After reboot run
+`sudo cat /proc/cmdline` to make sure that `i2c_touchscreen_props=...` is there
+and is correct.
+
+With some luck your touchscreen will now work right away. Sometimes the X/Y axis
+need be to swapped or inverted. Note swapping will automatically swap the size
+and min parameters, so those must not be swapped manually. So lets say you need
+to swap and invert the Y axis, you would then extend `i2c_touchscreen_props=`
+by adding `:touchscreen-swapped-x-y:touchscreen-inverted-y` after the size-x
+parameter, so you would get (abbreviated):
+
+```
+i2c_touchscreen_props=MSSL1680:touchscreen-min-x=...:touchscreen-size-y=1080:touchscreen-swapped-x-y:touchscreen-inverted-y
+```
+
+If one of the bezels around the display has a Windows logo chances are this
+can operate as a capacitive home-button. To test this add `:silead,home-button`
+after the existing `i2c_touchscreen_props=` parameters. After rebooting with
+`:silead,home-button` added to the parameters run `sudo evtest /dev/input/event#`
+and press the Windows logo if this reports `KEY_LEFTMETA` events then it works.
+
+If this does not work drop `silead,home-button` from your parameters since this
+may cause spurious `KEY_LEFTMETA` events when it is not supported.
+
+The linux touchscreen framework also supports some other properties that
+may be useful, see [touchscreen.yaml](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/input/touchscreen/touchscreen.yaml)
+for a full list.
+
+#### 6. Submit the parameters to gsl-firmware
+
+At this point everything should work. Please submit a pull request
+as described under "Adding new firmware" above. Please include
+a copy of the working firmware as
+`firmware/linux/silead/gsl<chip name>-<manufacturer>-<device>.fw`
+in this pull request. If you don't know the chip name, use gsl1680.
+Manufacturer and device name should be shortened to make the name readable,
+but still sufficiently unique.
+
+Also update firmware/linux/README.md adding an entry for the new firmware.
+
+In the pull request text please provide the working `i2c_touchscreen_props=`
+parameters and the output of running `grep . /sys/class/dmi/id/* 2> /dev/null`
+as a normal user. Then the gsl-firmware maintainers can help with creating
+a DMI quirk for your device model to make future kernels automatically apply
+the right parameters.
+
+You can also create a touchscreen_dmi.c patch yourself if you want, see below.
+
+
+### Patching touchscreen_dmi.c
 
 Fetch the current Linux source code and open `drivers/platform/x86/silead_dmi.c`
 in a text editor. Since Linux kernel 4.19, this file is called
@@ -255,12 +385,7 @@ Add a new entry to this list:
 ```
 
 The exact values and suitable matching tags depend on the particular device.
-You can find them with the help of `dmidecode`.
-Look for the section called "System Information".
-
-The linux touchscreen framework also supports some other properties that
-may be useful, see [touchscreen.yaml](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/input/touchscreen/touchscreen.yaml)
-for a full list.
+You can find them by running `grep . /sys/class/dmi/id/* 2> /dev/null`.
 
 [See here for an example patch](https://patchwork.kernel.org/project/platform-driver-x86/patch/20180608214558.30717-3-hdegoede@redhat.com/).
 
@@ -294,9 +419,9 @@ Example usage:
 
     tools/fwtool -c firmware.fw -m 1680 -w 940 -h 750 -t 10 silead_ts.fw
 
-This will read legacy firmware.fw, convert it into silead_ts.fw in
-the new format, then set the controller type to GSL1680, the panel
-width to 940 dots, the height to 750 dots and the maximum number
+This will read the regular `firmware.fw` file and convert it into `silead_ts.fw`
+in the gslx680_ts_acpi format, then set the controller type to GSL1680,
+the panel width to 940 dots, the height to 750 dots and the maximum number
 of touch points to 10. The README for each firmware should give
 you information on the information to put there.
 
@@ -331,7 +456,7 @@ a firmware image.
 The resulting firmware should be named silead_ts.fw and
 installed into /lib/firmware so the driver can find it.
 
-To convert a firmware image back into legacy format, use:
+To convert a firmware image back into regular format, use:
 
     tools/fwtool -x gslxxxx.fw silead_ts.fw
 
