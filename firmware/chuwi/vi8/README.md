@@ -1,9 +1,9 @@
-驰为/vi8
+Chuwi/vi8
 ---------------------------------------------
 
 | Item                      | Description |
 |---------------------------|-------------|
-| Manufacturer              | 驰为 |
+| Manufacturer              | 驰为 (Chuwi) |
 | Device                    | v891 v5 |
 | Website                   |  |
 | Vendor driver (Windows)   | |
@@ -18,4 +18,4 @@
 | Mirrored vertically       |  |
 | Axes swapped              |  |
 | Comments                  | fwtool -c gsl3676-onda-v891-v5.fw -w 1140 -h 1660 -t 10 silead_ts.fw -f swap,track |
-| 注意                  | 用的onda的固件生成的，长按 双击 好像无效 | 
+| 注意 (Notice)             | 用的onda的固件生成的，长按 双击 好像无效 (Generated from onda firmware, long press and double tap seem to be ineffective) | 
