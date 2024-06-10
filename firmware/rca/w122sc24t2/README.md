@@ -1,4 +1,4 @@
-rca/cambio/w101v2
+rca/cambio/w122sc24t2
 --------------------
 
 | Item | Description |
