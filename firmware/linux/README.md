@@ -47,6 +47,7 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl1680-positivo-c4128b.fw             | Positivo C4128B convertible |
 | gsl1680-rwc-nanote-p8.fw               | RWC Nanote P8 UMPC-02-SR (convertible) |
 | gsl1680-rwc-nanote-next.fw             | RWC Nanote NEXT UMPC-03-SR (convertible) |
+| gsl1680-sary-tab-3.fw                  | SARY Tab 3 |
 | gsl1680-teclast-x3-plus.fw             | Teclast X3 Plus tablets |
 | gsl1680-trekstor-primebook-c11.fw      | Trekstor Primebook C11[B] (convertible) |
 | gsl1680-trekstor-primebook-c13.fw      | Trekstor Primebook C13 (convertible) |
