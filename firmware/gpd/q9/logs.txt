@@ -1,0 +1,10 @@
+# cat /proc/kallsyms |grep -i fw |grep -i gs                   
+c04dd1c4 t gsl_load_fw
+c0878bd4 r GSLX680_FW
+
+root@rk3288:/ # cat /proc/kallsyms |grep GSLX680_FW -C1                        
+c0878bc4 r __func__.19799
+c0878bd4 r GSLX680_FW
+c0882dbc r __func__.20394
+
+dd if=/dev/mem of=/data/local/tmp/fw bs=1 skip=$((0x0878bd4) count=$((0xc0882dbc-0xc0878bd4))
