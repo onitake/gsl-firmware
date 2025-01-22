@@ -1,0 +1,121 @@
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = HIDClass
+ClassGuid   = {745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider    = %VENDOR%
+LayoutFile  = layout.inf
+DriverVer=05/19/2017,15.9.30.143
+CatalogFile = SileadTouch.cat
+
+;
+;   Layout.inf (etc.) list all files shipped with the operating system so the 
+;   source description sections are only needed if other files are needed.
+;   
+;   In order to use IHV drivers, the SourceDisksNames section must list the 
+;   disk(s) containing the drivers and the SourceDisksFiles section must list 
+;   which disk number each file to be copied is found on.
+;   Disk number 99 is used to avoid a conflict with the disk numbers defined 
+;   in layout.inf
+;
+;   Files used in a driver installation need to be digitally signed otherwise 
+;   installation may fail.  See documentation elsewhere in the DDK regarding 
+;   driver signing.
+
+[SourceDisksFiles]
+SileadTouch.sys  = 99
+
+[SourceDisksNames]
+99 = %DISK_NAME%,,,""
+
+[DestinationDirs]
+CopyFunctionDriver  = 12
+CopyFilterDriver    = 12
+
+[Manufacturer]
+%VENDOR%=Vendor, NTx86
+
+[Vendor.NTx86]
+%SileadTouch%         = SileadTouch.Inst, ACPI\MSSL1680
+
+
+
+;===============================================================
+;   Install section for windows 10
+;===============================================================
+[SileadTouch.Inst.NT]
+; Just copy the driver. No neeed to copy other system binaries.
+CopyFiles = CopyFilterDriver
+
+[SileadTouch.Inst.NT.HW]
+AddReg = SileadTouch_Parameters.AddReg, SileadTouch_Device.Configuration.AddReg
+
+;
+; mshidkmdf is the function driver and SileadTouch is the lower filter
+;
+[SileadTouch.Inst.NT.Services]
+AddService = SileadTouch, 0x00000002, SileadTouch_Service_Inst
+;AddService = SileadTouch,, SileadTouch_Service_Inst
+;AddService = mshidkmdf, 0x000001fa, mshidkmdf.AddService ;flag 0x2 sets this as the service for the device
+
+[CopyFilterDriver]
+SileadTouch.sys
+
+[SileadTouch_Parameters.AddReg]
+;HKR,,"LowerFilters",0x00010000,"SileadTouch"
+HKR,,"UpperFilters",0x00010000,"mshidkmdf"
+
+[SileadTouch_Device.Configuration.AddReg]
+HKR,,"EnhancedPowerManagementEnabled",0x00010001,1
+
+[mshidkmdf.AddService]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\mshidkmdf.sys
+
+:[OEMProjectInfo]
+:Project= WeiBu_S10CHR100_3692_L_32_ZW_0519
+
+;[TargetComputers]		
+;{89EDDC75-4248-5B7E-8408-F3E6C8712FCF}
+;Computer HardwareID for driver distribution.
+;===============================================================
+;   Service section (common to all OS versions)
+;===============================================================
+
+[SileadTouch_Service_Inst]
+DisplayName    = %SileadTouch%
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_IGNORE% 
+ServiceBinary  = %12%\SileadTouch.sys
+
+;================================================================
+; Strings section
+;===============================================================
+
+[Strings] 
+;Localizable
+VENDOR              = "Sileadinc.com" 
+SileadTouch         = "KMDF HID Minidriver for Touch I2C Device" 
+DISK_NAME           = "HID I2C Touch Device Sample Install Disk"
+
+;Non-Localizable
+SERVICE_BOOT_START     = 0x0 
+SERVICE_SYSTEM_START   = 0x1 
+SERVICE_AUTO_START     = 0x2 
+SERVICE_DEMAND_START   = 0x3 
+SERVICE_DISABLED       = 0x4 
+
+SERVICE_KERNEL_DRIVER  = 0x1 
+SERVICE_ERROR_IGNORE   = 0x0 
+SERVICE_ERROR_NORMAL   = 0x1 
+SERVICE_ERROR_SEVERE   = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ          = 0x00020000 
+REG_DWORD              = 0x00010001 
+REG_MULTI_SZ           = 0x00010000
+REG_BINARY             = 0x00000001
+REG_SZ                 = 0x00000000
+
