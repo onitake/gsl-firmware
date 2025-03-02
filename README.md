@@ -358,7 +358,6 @@ static const struct property_entry mycompany_mytablet_props[] = {
 	PROPERTY_ENTRY_U32("touchscreen-size-x", 128),
 	PROPERTY_ENTRY_U32("touchscreen-size-y", 128),
 	PROPERTY_ENTRY_STRING("firmware-name", "gsl1680-mycompany_mytablet.fw"),
-	PROPERTY_ENTRY_U32("silead,max-fingers", 10),
 	{ }
 };
 
