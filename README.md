@@ -39,7 +39,7 @@ for copyright information.
 | Chuwi         | SurBook mini                    | yes     | [firmware/chuwi/surbook_mini](firmware/chuwi/surbook_mini)     |
 | Chuwi         | vx8 3G 32GB                     | no      | [firmware/chuwi/vx8_3g_32GB](firmware/chuwi/vx8_3g_32GB)       |
 | Nuvision      | NES11                           | yes     | [firmware/nuvision/nes11](firmware/nuvision/nes11)             |
-| EastRising	| ER-TPC050-1                     | yes     | [firmware/eastrising/er-tpc050-1](firmware/eastrising/er-tpc050-1)|
+| EastRising	| ER-TPC050-1                       | yes     | [firmware/eastrising/er-tpc050-1](firmware/eastrising/er-tpc050-1)|
 | Trekstor      | SurfTab wintron 7.0             | yes     | [firmware/trekstor/surftab7old](firmware/trekstor/surftab7old) |
 | Trekstor      | SurfTab wintron 7.0 (ST70416-6) | yes     | [firmware/trekstor/surftab7new](firmware/trekstor/surftab7new) |
 | Trekstor      | SurfTab twin 10.1 (ST10432-8)   | yes     | [firmware/trekstor/surftab-twin-10.1-ST10432-8](firmware/trekstor/surftab-twin-10.1-ST10432-8)|
@@ -78,6 +78,7 @@ for copyright information.
 | iLife         | ZedBook 2                       | yes     | [firmware/ilife/zedbook2](firmware/ilife/zedbook2)             |
 | IRBIS         | tw48                            | yes     | [firmware/irbis/tw48/](firmware/irbis/tw48)                    |
 | IRBIS         | TW39                            | yes (doesn't work)     | [firmware/irbis/TW39](firmware/irbis/TW39)                     |
+| IRBIS         | TW39                            | yes (doesn't work)     | [firmware/irbis/TW39](firmware/irbis/TW39)      |
 | Mediacom      | WinPad X227E                    | yes     | [firmware/mediacom/winpad-x227e](firmware/mediacom/winpad-x227e)|
 | Myria         | MY8307                          | yes     | [firmware/myria/my8307](firmware/myria/my8307)                 |
 | Schneider     | SCT101CTM                       | yes     | [firmware/schneider/sct101ctm](firmware/schneider/sct101ctm)   |
