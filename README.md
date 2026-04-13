@@ -94,7 +94,7 @@ for copyright information.
 | Positivo      | C4128B                          | yes     | [firmware/positivo/c4128b](firmware/positivo/c4128b)           |
 | Globalspace   | SoLT IVW 11.6"                  | yes     | [firmware/globalspace/solt-ivw-11.6](firmware/globalspace/solt-ivw-11.6) |
 | SARY          | Tab 3                           | yes     | [firmware/sary/tab-3](firmware/sary/tab-3) |
-| AWOW			| AiBook 10						  | no		| [firmware/awow/aibook_10](firmware/awow/aibook_10/sileadtouch.sys) |
+| AWOW		    	| AiBook 10				   		          | yes     | [firmware/awow/aibook_10](firmware\AWOW\AiBook_10\gsl1680-awow-aibook10.fw) |
 
 
 ## Adding new firmware
