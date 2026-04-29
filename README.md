@@ -78,6 +78,7 @@ for copyright information.
 | iLife         | ZedBook 2                       | yes     | [firmware/ilife/zedbook2](firmware/ilife/zedbook2)             |
 | IRBIS         | tw48                            | yes     | [firmware/irbis/tw48/](firmware/irbis/tw48)                    |
 | IRBIS         | TW39                            | yes (doesn't work)     | [firmware/irbis/TW39](firmware/irbis/TW39)                     |
+| Mediacom      | WinPad X227E                    | yes     | [firmware/mediacom/winpad-x227e](firmware/mediacom/winpad-x227e)|
 | Myria         | MY8307                          | yes     | [firmware/myria/my8307](firmware/myria/my8307)                 |
 | Schneider     | SCT101CTM                       | yes     | [firmware/schneider/sct101ctm](firmware/schneider/sct101ctm)   |
 | techBite      | Arc 11.6                        | yes     | [firmware/techbite/arc_11_6](firmware/techbite/arc_11_6)       |
