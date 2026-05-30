@@ -89,6 +89,7 @@ for copyright information.
 | viglen        | connect10"                      | yes     | [firmware/vliglen/connect10](firmware/viglen/connect10)        |
 | Saphir        | WinPad 10.1 FHD                 | no      | [firmware/saphir/winpad_10_1](firmware/saphir/winpad_10_1)     |
 | Hykker        | Hello                           | yes     | [firmware/hykker/hello]( firmware/hykker/hello)                |
+| Fusion5       | FWIN232                         | yes     | [firmware/fusion5/fwin232](firmware/fusion5/fwin232/) |
 | Fusion5       | FWIN232PLUS                     | yes     | [firmware/fusion5/fwin232plus](firmware/fusion5/fwin232plus)   |
 | Fusion5       | T60                             | yes     | [firmware/fusion5/T60](firmware/fusion5/T60)                   |
 | CSL           | Panther Tab HD                  | yes     | [firmware/csl/panther-tab-hd](firmware/csl/panther-tab-hd)     |
