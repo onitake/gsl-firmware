@@ -97,6 +97,7 @@ for copyright information.
 | SARY          | Tab 3                           | yes     | [firmware/sary/tab-3](firmware/sary/tab-3)					 |
 | AWOW			| AiBook 10						  | no		| [firmware/awow/aibook_10](firmware/awow/aibook_10/)			 |
 | Mytab			| Garda U80GT	        		  | yes		| [firmware/mytab/Garda_U80GT](firmware/mytab/Garda_U80GT/)		 |
+| DIGMA         | CITI 10 C402T (CS1044EW)        | yes     | [firmware/digma/citi_10_c402t_cs1044ew](firmware/digma/citi_10_c402t_cs1044ew)|
 
 
 ## Adding new firmware
