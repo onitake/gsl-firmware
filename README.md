@@ -84,6 +84,7 @@ for copyright information.
 | techBite      | Arc 11.6                        | yes     | [firmware/techbite/arc_11_6](firmware/techbite/arc_11_6)       |
 | Vinga         | Twizzle J116                    | yes     | [firmware/vinga/twizzle_j116](firmware/vinga/twizzle_j116)     |
 | Multilaser    | M11W                            | yes     | [firmware/multilaser/m11w](firmware/multilaser/m11w)           |
+| Multilaser    | M7S Quadcore (ML11)             | yes     | [firmware/multilaser/m7s](firmware/multilaser/m7s)             |
 | RWC           | NANOTE P8                       | yes     | [firmware/rwc/nanote-p8](firmware/rwc/nanote-p8)               |
 | RWC           | NANOTE NEXT                     | yes     | [firmware/rwc/nanote-next](firmware/rwc/nanote-next)           |
 | viglen        | connect10"                      | yes     | [firmware/vliglen/connect10](firmware/viglen/connect10)        |
