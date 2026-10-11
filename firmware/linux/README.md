@@ -86,3 +86,4 @@ simply copy the silead directory to /lib/firmware/silead:
 | gsl3692-pov-mobii-wintab-p1006w-v10.fw | Point of View mobii Wintab P1006w (v1.0) tablets |
 | gsl3692-teclast-tbook11.fw             | Teclast Tbook 11 tablets |
 | gsl3692-teclast-x16-plus.fw            | Teclast X16 Plus tablets |
+| gsl1680-multilaser-m7s.fw              | Multilaser M7S Quadcore (ML11) tablets (Allwinner A33) |
