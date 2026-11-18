@@ -34,8 +34,10 @@ for copyright information.
 | Chuwi         | Hi10 Air                        | yes     | [firmware/chuwi/hi10_air](firmware/chuwi/hi10_air)             |
 | Chuwi         | Hi10 Pro                        | yes     | [firmware/chuwi/hi10_pro](firmware/chuwi/hi10_pro)             |
 | Chuwi         | Hi10 Pro new (z8350, 20161209)  | yes     | [firmware/chuwi/hi10_pro-z8350](firmware/chuwi/hi10_pro-z8350) |
+| Chuwi         | Hi10 Pro (z8350, HQ64G42170704809) | yes     | [firmware/chuwi/hi10-pro-z8350-Hi10_HQ64G42170704809](firmware/chuwi/hi10-pro-z8350-Hi10_HQ64G42170704809) |
 | Chuwi         | Hi10 Plus                       | yes     | [firmware/chuwi/hi10_plus](firmware/chuwi/hi10_plus)           |
 | Chuwi         | HiBook                          | yes     | [firmware/chuwi/hibook](firmware/chuwi/hibook)                 |
+| Chuwi         | HiBook Pro                      | no      | [firmware/chuwi/hibook_pro](firmware/chuwi/hibook_pro) |
 | Chuwi         | SurBook mini                    | yes     | [firmware/chuwi/surbook_mini](firmware/chuwi/surbook_mini)     |
 | Chuwi         | vx8 3G 32GB                     | no      | [firmware/chuwi/vx8_3g_32GB](firmware/chuwi/vx8_3g_32GB)       |
 | Nuvision      | NES11                           | yes     | [firmware/nuvision/nes11](firmware/nuvision/nes11)             |
@@ -58,11 +60,13 @@ for copyright information.
 | Cube          | i10                             | yes     | [firmware/cube/i10](firmware/cube/i10)                         |
 | Cube          | KNote (i1101)                   | yes     | [firmware/cube/i1101](firmware/cube/i1101)                     |
 | Cube          | KNote Go(i1101S)                | yes     | [firmware/cube/i1101S](firmware/cube/i1101S)                   |
+| Digma         | CITI 1804 (CS1069EW)            | yes     | [firmware/digma/citi_1804_cs1069ew](firmware/digma/citi_1804_cs1069ew) |
+| Digma         | Citi E200 (ES2000EW)            | no      | [firmware/digma/citi_e200_es2000ew](firmware/digma/citi_e200_es2000ew) |
 | jumper        | EZpad mini3                     | yes     | [firmware/jumper/EZpad_mini3](firmware/jumper/EZpad_mini3)     |
-| jumper        | EZpad 5SE                       | no      | [firmware/jumper/EZpad_5SE](firmware/jumper/EZpad_5SE)         |
+| jumper        | EZpad 5SE                       | no      | [firmware/jumper/Ezpad_5SE](firmware/jumper/Ezpad_5SE)         |
 | jumper        | EZpad 6                         | yes     | [firmware/jumper/EZpad_6](firmware/jumper/EZpad_6)             |
 | jumper        | EZpad 6(S) Pro                  | yes     | [firmware/jumper/EZpad_6_pro](firmware/jumper/EZpad_6_pro)     |
-| jumper        | EZpad 6(S) Pro b                | yes     | [firmware/jumper/EZpad_6_pro_b](firmware/jumper/EZpad_6_pro_b) |
+| jumper        | EZpad 6(S) Pro b                | yes     | [firmware/jumper/Ezpad_6_pro_b](firmware/jumper/Ezpad_6_pro_b) |
 | jumper        | EZpad 8 Pro                     | yes     | [firmware/jumper/EZpad_8_pro](firmware/jumper/EZpad_8_pro)     |
 | 4Good         | T803i                           | no      | [firmware/4good/t803i](firmware/4good/t803i)                   |
 | Voyo          | VBOOK A1                        | yes     | [firmware/voyo/at13](firmware/voyo/at13)                       |
@@ -93,10 +97,12 @@ for copyright information.
 | Fusion5       | T60                             | yes     | [firmware/fusion5/T60](firmware/fusion5/T60)                   |
 | CSL           | Panther Tab HD                  | yes     | [firmware/csl/panther-tab-hd](firmware/csl/panther-tab-hd)     |
 | Positivo      | C4128B                          | yes     | [firmware/positivo/c4128b](firmware/positivo/c4128b)           |
+| Positivo      | C464C                           | yes     | [firmware/positivo/c464c](firmware/positivo/c464c) |
 | Globalspace   | SoLT IVW 11.6"                  | yes     | [firmware/globalspace/solt-ivw-11.6](firmware/globalspace/solt-ivw-11.6) |
 | SARY          | Tab 3                           | yes     | [firmware/sary/tab-3](firmware/sary/tab-3)					 |
-| AWOW			| AiBook 10						  | no		| [firmware/awow/aibook_10](firmware/awow/aibook_10/)			 |
+| AWOW			| AiBook 10						  | no		| [firmware/AWOW/AiBook_10](firmware/AWOW/AiBook_10/)			 |
 | Mytab			| Garda U80GT	        		  | yes		| [firmware/mytab/Garda_U80GT](firmware/mytab/Garda_U80GT/)		 |
+| Lark          | Ultimate 7i WIN                 | no      | [firmware/lark/ulti7iwin](firmware/lark/ulti7iwin) |
 
 
 ## Adding new firmware
