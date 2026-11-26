@@ -70,6 +70,14 @@ for copyright information.
 | DEXP          | Ursus 7W Rev.1                  | yes     | [firmware/dexp/ursus7w-rev1](firmware/dexp/ursus7w-rev1)       |
 | DEXP          | Ursus 7W Rev.2                  | yes     | [firmware/dexp/ursus7w-rev1](firmware/dexp/ursus7w-rev2)       |
 | DEXP          | Ursus KX210i                    | yes     | [firmware/dexp/ursus-kx210i](firmware/dexp/ursus-kx210i)       |
+| Digma         | CITI 1802 (ES1061EG)            | no      | [firmware/digma/citi_1802_es1061eg](firmware/digma/citi_1802_es1061eg) |
+| Digma         | CITI 1808 (ES1028EW)            | no      | [firmware/digma/citi_1808_es1028ew](firmware/digma/citi_1808_es1028ew) |
+| Digma         | CITI E203 (ES2010EW)            | no      | [firmware/digma/citi_e203_es2010ew](firmware/digma/citi_e203_es2010ew) |
+| Digma         | CITI E220 (ES2006EW)            | no      | [firmware/digma/citi_e220_es2006ew](firmware/digma/citi_e220_es2006ew) |
+| Digma         | CITI E222 (ES2016EW)            | no      | [firmware/digma/citi_e222_es2016ew](firmware/digma/citi_e222_es2016ew) |
+| Digma         | EVE 10 A203T (ES1239EL)         | no      | [firmware/digma/eve_10_a203t_es1239el](firmware/digma/eve_10_a203t_es1239el) |
+| Digma         | EVE 10 A204T (ES1240EW)         | no      | [firmware/digma/eve_10_a204t_es1240ew](firmware/digma/eve_10_a204t_es1240ew) |
+| Digma         | EVE 10 A400T (ES1247EW)         | no      | [firmware/digma/eve_10_a400t_es1247ew](firmware/digma/eve_10_a400t_es1247ew) |
 | Teclast       | X3 Plus                         | yes     | [firmware/teclast/x3_plus](firmware/teclast/x3_plus)           |
 | Teclast       | X5 Pro                          | yes     | [firmware/teclast/x5_pro](firmware/teclast/x5_pro)             |
 | Proworx       | MX049                           | yes     | [firmware/proworx/mx049](firmware/proworx/mx049)               |
