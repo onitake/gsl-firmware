@@ -24,3 +24,16 @@ v11.16.5.860 is taken from the C://Windows/System32/drivers folder.
 v11.34.20.359 is taken from the official website.
 
 Files firmware.fw and silead_ts.fw are based on the v11.34.20.359 driver.
+
+Note on the extracted firmware (added later)
+--------------------------------------------
+
+`windows_10_drivers/v11.34.20.359/SileadTouch.sys` (git blob b99589513775bf522e4f29b3b72ede6358719d27; the same file is in the
+Digma factory driver package `citi_e200_es2000ew_rev1_win10x64_b1803_drivers_20180227`) contains one firmware image of
+**144 pages (38016 bytes)**. `firmware.fw` in this folder (and `firmware/linux/silead/gsl1686-digma_citi_e200.fw`,
+used by `touchscreen_dmi.c`) has **143 pages (37752 bytes)**: it is the same image without the last page (page register
+0x9f). Everything else is byte-identical.
+
+The full 144-page image is byte-identical to [firmware/odys/fusionwin12](../../odys/fusionwin12) `firmware.fw`
+(git blob 94fce7998383ebf6affe6bd0410decf01c0cbf42), so the Digma Citi E200 and the Odys Fusion Win 12 use the same
+Silead firmware. Whether the missing page matters was not tested.
